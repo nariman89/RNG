@@ -1,5 +1,6 @@
 <?php
 
+// SocialAuthFacebookController.php
 
 namespace App\Http\Controllers;
 
@@ -15,7 +16,7 @@ class SocialAuthFacebookController extends Controller
    */
     public function redirect()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->redirect('projects/index');
     }
 
     /**
@@ -23,11 +24,9 @@ class SocialAuthFacebookController extends Controller
      *
      * @return callback URL from facebook
      */
-    public function callback(SocialFacebookAccountService $service)
+    public function callback()
     {
-        $user = $service->createOrGetUser(Socialite::driver('facebook')->user());
-        auth()->login($user);
-        return redirect()->to('/projects/index');
-    }
+      return view('projects/index');
+	}
 
 }

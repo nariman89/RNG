@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Article;
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-		$articles=Article::all();
-        return view('back.article.index', compact('articles'));
+		$articles=Article::paginate(9);
+        return view('back/article/index', compact('articles'));
     }
 
     /**
@@ -70,7 +71,12 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article->name = $request->name;
+        $article->url = $request->url;
+        $article->rent_price = $request->rent_price;
+        $article->save();
+
+		       return redirect()->back();
     }
 
     /**
@@ -81,6 +87,9 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-		$article=Article::find($id)->delet();
-	return back();    }
+		$article=Article::find($id);
+		$article->delete();
+		       return redirect()->back();
+
+   }
 }

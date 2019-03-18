@@ -10,10 +10,10 @@
 						<div class="card h-100">
                             <ol>
 @foreach($articles as $article)
-    <a href="#"><img class="card-img-top" height="150px" src="" alt="image" ></a>
+
     <div class="card-body">
         <h5 class="card-title">
-            <a href="/projects/{{ $article->name }}">{{$article->name}}</a></li>
+            <a href="/showDetail/{{[article->article_id]}}">{{$article->name}}</a></li>
         </h5>
         <h6>{{ $article->rent_price }}</h6>
     </div>

@@ -18,14 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('adress');
+            $table->string('adress')->nullable();
              $table->integer('role_id')->default(2); /////admin ska bli 1
-            $table->bigInteger('phone');
-            $table->string('password');
+            $table->bigInteger('phone')->nullable();
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
-        
+
     }
 
     /**

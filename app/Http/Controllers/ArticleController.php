@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\{
          Article,
@@ -10,12 +10,18 @@ use App\{
          Image
         };
 
+
 class ArticleController extends Controller
 {
     protected $validation_rules = [
         'name' => 'required|min:5',
         'description' => 'required|min:5',
     ];
+  //   protected $serviceURL;
+
+  // public function __construct()
+  // {
+  //   $this->serviceURL = config('api.article.service_url');}
     /**
      * Display a listing of the resource.
      *
@@ -27,16 +33,19 @@ class ArticleController extends Controller
 	}
 
 
-	
-  // public function __construct()
-  // {
-  //   ////för att man kam inte lägga till en article innan man logga in
-  //    return $this->middleware('auth');
-  // }
+
+  public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+
+
+    }
+    ////för att man kam inte lägga till en article innan man logga in
+
    public function create()
 
     {
-        ////för att sätta dem i create form NA
+        ////för att sätta dem i dropDown i form NA
         $categories=Category::pluck('category_name','category_id');
         $cities=City::pluck('city_name','city_id');
         $articles=Article::all();
@@ -48,43 +57,39 @@ class ArticleController extends Controller
 
      public function store(Request $request)  ////to save data från db to form
     {
-        //spara images
+		//spara article
+		///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
         $article=Article::create($request->all()+ ['user_id'=>$request->user()->user_id]);
-        ///laravel5.5 NA
-            foreach($request->images as $img)
-             {
-             $filename=$img->store('public/img');
-              $image=new Image();
-              $image->image=basename($filename);
-              $article->images()->save($image);  ////to save images
-              }
-        //         $validData = $request->validate($this->validation_rules);
+        $validData = $request->validate($this->validation_rules);
+        $article->user_id = Auth::user()->user_id;
+        $article->name = $validData['name'];
+        $article->description = $validData['description'];
+        $article->rent_price=$request->rent_price;
+        $article->url = $request->url;
+         $article->category_id=$request->category_id;
+       $article->city_id=$request->city_id;
+              $article->save();
 
-        // $article->user_id = Auth::user()->id;
-        // $article->name = $validData['name'];
-        // $article->description = $validData['description'];
-        // $article->category_id = $validData['category_id'];
-        // $article->city_id = $validData['city_id'];
+               return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
 
-        // $article->save();
-            //redirect('/projects')
-              return redirect('layouts/adsCategory')->with('success', 'Your Article has been added! 💃💃💃💃💃');
     }
+//
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-   
+
 public function show($id)
   {
     $articles = Article::find($id);
     return redirect('layouts.show',compact('articles'));
   }
-     
-    
 
-    
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -93,7 +98,7 @@ public function show($id)
      * @return \Illuminate\Http\Response
      */
 
-       
+
 
     /**
      * Display the specified resource.
@@ -111,7 +116,10 @@ public function show($id)
      */
     public function edit($id)
     {
-        //
+			$articles = Article::find($id);
+			$articles->edit();
+
+	        return redirect('/projects/index' . $article->id);
     }
 
     /**
@@ -123,7 +131,13 @@ public function show($id)
      */
     public function update(Request $request, $id)
     {
-        //
+     $article->name = $request->name;
+        $article->url = $request->url;
+        $article->rent_price = $request->rent_price;
+        $article->save();
+
+	        return redirect('/projects/index' . $article->id);
+
     }
 
     /**
@@ -134,6 +148,9 @@ public function show($id)
      */
     public function destroy($id)
     {
-        //
+	$articles = Article::find($id);
+	$article->delete();
+	        return redirect('/projects/index' . $article->id);
+
     }
 }

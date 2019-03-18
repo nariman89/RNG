@@ -45,6 +45,20 @@
                                 <a class="nav-link" href="/layouts/adsCategory">Add a new Article</a>
                             </li>
                         @endauth
+					</ul>
+					<ul class="navbar-nav mr-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/projects/showfinish">My booking</a>
+                            </li>
+                        @endauth
+					</ul>
+					<ul class="navbar-nav mr-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/projects/myarticles">MY Article</a>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -71,7 +85,10 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+<fb:login-button
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -87,15 +104,13 @@
 			<div class="container ">
 				<div class="row">
 					<div class="col-2">
-                        <button type="button" href="{{url('/layouts/adsCategory') }}"  onclick="event.preventDefault();
-                                                     document.getElementById('add-form').submit();" class="btn btn-primary">Create New Article</button>
-						
+
 					<h1 class="my-4">Category</h1>
 
 
 				  <div class="list-group ">
 					  @foreach($items as $item)
-					<a href="/layouts/showCategory" class="list-group-item">{{$item->category_name}}</a>
+					<a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a>
 					@endforeach
 					<a href="" class="list-group-item">Dator</a>
 				  </div>

@@ -17,12 +17,13 @@ return [
 
 // services.php
 
-    
+
 'facebook' => [
 
-    'client_id' => '576570119509398',
-    'client_secret' => 'eb92f0c8695adf0c7372c524081d70aa',
-    'redirect' => 'rng.test/projects/index',
+    'client_id' => '846840225660756
+',
+    'client_secret' => 'f89fb6d53ba16723e9dbb4060d617dc8',
+    'redirect' => 'http://rng.test/projects/index',
 ],
 
     'mailgun' => [
@@ -53,6 +54,7 @@ return [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
+
     ],
 
 ];

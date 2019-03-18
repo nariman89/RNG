@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\{
          Article,
          City,
-         Category,
-         Image
+         Category
         };
 class HomeController extends Controller
 {
@@ -26,20 +25,36 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
         public function index()
     {
-      $articles=Article::select('article_id','name', 'rent_price' )
+      $articles=Article::select('article_id','name', 'rent_price', 'url' )
                       ->latest()
-                     ->paginate(9);
+                     ->paginate(10);
         return view('/projects/index', ['articles' => $articles]);  //
-    
+
     }
-       public function adsByCategory($id)
-    {
-        $articles=Article::where('category_id',$id)->get();
-        return view ('layouts.byCategory',compact($articles));
+       public function adsByCategory(Category $category)
+  {
+
+        $articles = Article::where('category_id', $category->id)->get();
+
+        return view ('projects/showCategory',['category' => $category, 'articles' => $articles ]);
         ///måste category_name som skickat =category _id
 
+    }
+    public function show()
+
+    {
+		        $articles = $category->articles;
+
+        $articles=Article::where('category_id',$id)->get();
+        return view ('layouts/showCategory',compact($articles));
+    }
+    public function adsDetails($id){
+
+		$article=Article::find($id);
+		$articles=Article::all();
+        return view ('layouts/showDetail', compact('article'));
     }
 }

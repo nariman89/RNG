@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\{
          Article,
-         City,
-         Category,
-         Image
+         City
         };
 
 class Category extends Controller
@@ -29,18 +27,20 @@ class Category extends Controller
      */
      public function create()  ///to call create Article
 {
-    $articles=Article::all();
-                   // ->$latest()
-                   // ->paginate(9);
-        return view::make('layputs/app', ['articles' => $articles]);
+    $articles=Article::all()
+                   ->$latest()
+                   ->paginate(10);
+        return view::make('layouts/app', ['articles' => $articles]);
     }
-        // dd($categories);
+		// dd($categories);
 
-        
 
- 
 
-    
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -59,10 +59,7 @@ class Category extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
-    {
-        return view ('layouts/showCategory');
-    }
+
 
     /**
      * Show the form for editing the specified resource.

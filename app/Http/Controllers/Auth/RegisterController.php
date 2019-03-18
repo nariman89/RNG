@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = ('projects/index')->with('success', 'Your Article has been added! 💃💃💃💃💃');;
+    protected $redirectTo = ('projects/index');
 
     /**
      * Create a new controller instance.

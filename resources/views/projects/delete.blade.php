@@ -2,19 +2,19 @@
 
 @section('content')
 	<div class="container mt-3">
-		{{-- <h1>Edit Article: {{ $article->name }}</h1> --}}
+		<h1>Edit Article: {{ $article->name }}</h1>
 
 		{{-- @include('partials/validation_errors') --}}
 
-		{{-- <form method="POST" action="/projects/{{ $article->id }}"> --}}
+		<form method="POST" action="/projects/{{ $article->id }}">
 
-			{{-- @csrf
+			@csrf
 			@method('PUT')
 
 			<div class="form-group">
 				<label for="title">article Name</label>
 				<input type="text" name="name" id="name" class="form-control" placeholder="article Title" required value="{{ old('title') ? old('title') : $article->title }}">
-			</div> --}}
+			</div>
 
 			<div class="form-group">
 				<label for="description">article Description</label>
