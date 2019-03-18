@@ -1,0 +1,16 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+	background-color:linear-gradient(rgba(245, 212, 231, 0.44) 0%, rgba(241, 205, 226, 0.44) 2.96%, rgba(224, 177, 204, 0.44) 15.27%, rgba(226, 124, 183, 0.44) 24.14%, rgba(219, 81, 161, 0.44) 42.86%, rgba(159, 29, 104, 0.44) 62.56%, rgba(137, 21, 88, 0.44) 71.43%, rgba(167, 27, 107, 0.67) 98.03%, rgba(113, 22, 74, 0.44) 100%);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+}
