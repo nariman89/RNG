@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Booking;
 use App\Article;
+use Auth;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -15,17 +16,28 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
 	public function __construct()
     {
         $this->middleware('auth');
     }
-    public function index()
+    // public function index()
+    // {
+
+    // $articles=Article::all();
+	// return redirect('/layouts/showDetail', compact( $article->id));
+
+
+	// }
+	public function index()
     {
+      $bookings=Booking::select('booking_id','name', 'email', 'date_start', 'date_end' );
+        return view('/layouts/bookfinish', ['bookings' => $bookings]);  //
 
-    $articles=Article::all();
-	return redirect('/layouts/showDetail', compact( $article->id));
-
-
+	}
+	public function show(){
+          $bookings =Booking::all();
+        return view ('layouts/bookfinish', compact('$bookings'));
     }
 
     /**
@@ -72,12 +84,13 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
-    {
-		$booking=Booking::all();
-        return view('layouts/bookfinish', ['booking' => $booking]);
+    // public function show(Booking $booking)
+    // {
+	// 	$booking=Booking::all();
+    //     return view('projects/myarticles', ['booking' => $booking]);
 
-	}
+	// }
+
 
 
     /**
@@ -100,7 +113,17 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+
+        $booking->name = $request->name;
+        $booking->email = $request->email;
+		$booking->phone = $request->phone;
+		$booking->date_start = $request->date_start;
+        $booking->date_end = $request->date_end;
+
+        $booking->save();
+
+	        return redirect('/layouts/bookfinish' . $booking->id);
+
     }
 
     /**
@@ -112,5 +135,6 @@ class BookingController extends Controller
     public function destroy(Booking $booking)
     {
         //
-    }
+	}
+
 }

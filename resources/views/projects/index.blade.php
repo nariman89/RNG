@@ -7,7 +7,7 @@
 
 		@include('partials/validation_errors')
 	<div class="container text-left">
-		<h4>Recommend article</h4><hr/>
+		{{-- <h4>Recommend article</h4><hr/> --}}
 		<div class="row">
 		<div class="col-md-2"></div>
      <div class="col-md-6">

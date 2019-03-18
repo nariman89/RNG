@@ -124,6 +124,7 @@ use Carbon\Carbon;
 
 <br>
 			<input type="submit" value="save" class="btn btn-primary">
+
 		{!!Form::close()!!}
 
 

@@ -49,7 +49,7 @@
 					<ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="/projects/showfinish">My booking</a>
+                                <a class="nav-link" href="/layouts/bookfinish">My booking</a>
                             </li>
                         @endauth
 					</ul>

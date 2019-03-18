@@ -2675,6 +2675,8 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\HttpFoundation\\": ""
+
+
                 },
                 "exclude-from-classmap": [
                     "/Tests/"
