@@ -34,8 +34,8 @@ Route::get('/callback', 'SocialAuthFacebookController@callback');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function() {
-Route::get('/layouts/myarticles', function () {
-	return view('/layouts/myarticles');
+Route::get('/projects/myarticles', function () {
+	return view('/projects/myarticles');
 });
 });
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
