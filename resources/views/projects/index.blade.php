@@ -9,23 +9,11 @@
 	<div class="container text-left">
 		<h4>Recommend article</h4><hr/>
 		<div class="row">
-	<div class="col-3  ml-4 text-left">
-		<div class="card h-100">
-			<a href="#"><img class="card-img-top" height="150px" src="https://www.elgiganten.se/image/dv_web_D18000100279466/APPLEMQD22HYA/apple-tv-4k-generation-5-32-gb.jpg?$fullsize$" alt="image" ></a>
-		<div class="card-body">
-				<h5 class="card-title">
-				  <a href="">Apple TV 4K generation </a>
-				</h5>
-				<h6>600 kr</h6>
-				<a>read more</a>
-				<button href="/layouts/book">Boka</button>
-		</div>
-		</div>
-		</div>
-
-
-    <div class="container text-center">
-  <h3>All Articles</h3><br>
+		<div class="col-md-2"></div>
+     <div class="col-md-6">
+	<center ><h1 style="background-color:DodgerBlue;">Welcome {{Auth::user()->name}}</h1></center></div>
+    <div class="container text-left">
+  <h1 style="color: DodgerBlue; margin:30px;">All Articles</h1><br>
 </div>
   <div class="container cl-sm-3 text-center">
   <div class="row">
