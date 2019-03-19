@@ -9,7 +9,7 @@ $bookings = Booking::where('article_id', auth()->id())->get();
 
 
 @foreach ($bookings as $booking)
-{{-- visa om nån  bokat min article NA --}}
+{{-- visa om nån ala bokat min article NA --}}
 <h1>Booking Info:</h1>
 
  <p><strong>Firstname:</strong> nar</p>

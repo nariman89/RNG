@@ -35,13 +35,6 @@ class Category extends Controller
 		// dd($categories);
 
 
-
-
-
-
-
-
-
     /**
      * Store a newly created resource in storage.
      *

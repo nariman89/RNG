@@ -34,23 +34,38 @@ class HomeController extends Controller
         return view('/projects/index', ['articles' => $articles]);  //
 
     }
-       public function adsByCategory(Category $category)
+       public function adsByCategory($id)
   {
 
-        $articles = Article::where('category_id', $category->id)->get();
 
-        return view ('projects/showCategory',['category' => $category, 'articles' => $articles ]);
+		$articles = Article::where('category_id', $id)->get();
+			  return view ('projects/showCategory', compact('articles'));
+
+
+        // return view ('projects/showCategory',['category' => $category, 'articles' => $articles ]);
         ///måste category_name som skickat =category _id
 
-    }
-    public function show()
+	}
+	public function show(Category $category)
+  {
+	// s
+	// $categories = Category::find($category);
+	// $categories = Category::All();
+ $articles = Article::where('category_id', $category->id)->get();
+	// 	return view ('projects/showCategory',['category' => $category, 'articles' => $articles ]);
 
-    {
-		        $articles = $category->articles;
+    return view ('projects/showCategory', compact('articles'));
+	 }
 
-        $articles=Article::where('category_id',$id)->get();
-        return view ('layouts/showCategory',compact($articles));
-    }
+
+    // public function show()
+
+    // {
+	// 	$articles = Article::where('category_id', $category->id)->get();
+	// 			$articles = $category->articles;
+
+    //     return view ('projects/showCategory',compact($articles));
+    // }
     public function adsDetails($id){
 
 		$article=Article::find($id);

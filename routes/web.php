@@ -15,11 +15,13 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
-Route::get('category/{Category}', 'HomeController@adsByCategory');
+Route::get('category/{id}', 'HomeController@adsByCategory');
 
 Route::post('/layouts/adsCategory', 'ArticleController@store');
 Route::post('/projects', 'CategoryController@store');
 Route::get('showDetail/{id}','HomeController@adsDetails');
+// Route::get('category/{Category}','HomeController@show');
+
 // Route::get('bookfinish/{id}','BookingController@finish');
 
 
@@ -50,6 +52,7 @@ Route::get('/layouts/bookfinish', function () {
 });
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
 Route::delete('article/{id}', 'admin\ArticleController@destroy');
+// Route::get('layouts/showCategory', 'CategoryController@show');
 
 
 // Route::get('book/{id}', 'BookingController@index');

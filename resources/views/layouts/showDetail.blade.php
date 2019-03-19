@@ -36,14 +36,14 @@ use Carbon\Carbon;
 		<div>
 			<div class="row">
 		<h2 class="text-info">City:</h2>
-		<h3 class="card-text"> {{$article->city_id }}</h3>
+		<h3 class="card-text"> {{$article->city_id}}</h3>
 		</div></div>
 		<div>
 			<div class="row">
     	<h2 class="text-info">Description:</h2>
 		<h2 class="card-text">{{$article->description}}</h2>
 		</div></div>
-		<button  onclick="myFunction()"> Boka</button>
+		<button  onclick="myFunction()"> Book</button>
 		<div id="myDIV">
 			<div class="container mt-3">
 		<h1>Book an Article</h1>

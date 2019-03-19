@@ -17,11 +17,6 @@ class ArticleController extends Controller
         'name' => 'required|min:5',
         'description' => 'required|min:5',
     ];
-  //   protected $serviceURL;
-
-  // public function __construct()
-  // {
-  //   $this->serviceURL = config('api.article.service_url');}
     /**
      * Display a listing of the resource.
      *

@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" href="/css/app.css">
 
-	<title>@yield('title', 'My First Site')</title>
+	<title>@yield('title', 'Rent My Gear')</title>
 </head>
 <body>
 
