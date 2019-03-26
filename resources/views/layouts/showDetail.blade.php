@@ -74,14 +74,7 @@ use Carbon\Carbon;
       <input type="text" class="form-control" id="adress" name="adress" placeholder="Adress" required>
     </div>
 
-	{{-- <div class="form-group col-md-6">
-      <label for="date_start">date_start</label>
-      <input type="text" class="form-control" id="date_start" name="date_start" placeholder="date_start" required>
-	</div>
-	<div class="form-group col-md-6">
-      <label for="date_end">date_end</label>
-      <input type="text" class="form-control" id="date_end" name="date_end" placeholder="date_end" required>
-    </div> --}}
+
  <div class="form-group col-md-6">
       <label for="date_start">Date Start</label>
       <select class="form-control" name="date_start">

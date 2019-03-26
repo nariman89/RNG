@@ -182,7 +182,7 @@ i.material-icons {
         {{ session()->get('message') }}
     </div>
 @endif
- -->
+
             {!! Form::open(array('files'=>true)) !!}
              <!--  jag skriv array för att låta användare ladda upp fler bilder/ ska bli sakert att koden aktiveras NA -->
 			<div class="form-group">

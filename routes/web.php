@@ -42,8 +42,8 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/projects/myarticles', function () {
 	return view('/projects/myarticles');
 });
-Route::get('/layouts/bookfinish', function () {
-	return view('/layouts/bookfinish');
+Route::get('/bookings/bookfinish', function () {
+	return view('/bookings/bookfinish');
 });
 
 
@@ -51,13 +51,15 @@ Route::get('/layouts/bookfinish', function () {
 
 });
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
+Route::resource('/layouts', 'ArticleController');
+
 Route::delete('article/{id}', 'admin\ArticleController@destroy');
 // Route::get('layouts/showCategory', 'CategoryController@show');
 
 
 // Route::get('book/{id}', 'BookingController@index');
- Route::get('/layouts/bookfinish', 'BookingController@index');
-  Route::get('/layouts/bookfinish', 'BookingController@show');
+ Route::resource('/bookings', 'BookingController');
+//   Route::get('/layouts/bookfinish', 'BookingController@show');
 
 
 // Route::get('layouts/showfinish', 'BookingController@show');
@@ -70,6 +72,6 @@ Route::post('/layouts/showDetail', 'BookingController@store');
 Route::middleware(['auth'])->group(function() {
 Route::get('/layouts/adsCategory', 'ArticleController@create');
 
-	Route::resource('/projects', 'ArticleController');
+	// Route::resource('/projects', 'ArticleController');
 	Route::get('/dashboard', 'DashboardController@index');
 });

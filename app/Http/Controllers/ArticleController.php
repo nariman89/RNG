@@ -114,7 +114,7 @@ public function show($id)
 			$articles = Article::find($id);
 			$articles->edit();
 
-	        return redirect('/projects/index' . $article->id);
+	        return redirect('/layouts/index' . $article->id);
     }
 
     /**
@@ -131,7 +131,7 @@ public function show($id)
         $article->rent_price = $request->rent_price;
         $article->save();
 
-	        return redirect('/projects/index' . $article->id);
+	        return redirect('/layouts/index' . $article->id);
 
     }
 
@@ -145,7 +145,7 @@ public function show($id)
     {
 	$articles = Article::find($id);
 	$article->delete();
-	        return redirect('/projects/index' . $article->id);
+	        return redirect('/layouts/index' . $article->id);
 
     }
 }

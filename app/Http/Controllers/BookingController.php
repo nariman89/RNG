@@ -28,12 +28,10 @@ class BookingController extends Controller
 	// return redirect('/layouts/showDetail', compact( $article->id));
 
 
-	// }
-	public function index()
-    {
-      $bookings=Booking::select('booking_id','name', 'email', 'date_start', 'date_end' );
-        return view('/layouts/bookfinish', ['bookings' => $bookings]);  //
 
+	public function index(){
+
+    //
 	}
 	public function show(){
           $bookings =Booking::all();
@@ -122,7 +120,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-	        return redirect('/layouts/bookfinish' . $booking->id);
+	        return redirect('/bookings/bookfinish' . $booking->id);
 
     }
 
