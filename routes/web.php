@@ -12,64 +12,49 @@
 */
 Auth::routes();
 Route::view('/', 'welcome'); //First page
-
-Route::get('category/{id}', 'HomeController@adsByCategory');
-
-Route::post('/layouts/adsCategory', 'ArticleController@store');
-Route::post('/projects', 'CategoryController@store');
-Route::get('showDetail/{id}','HomeController@adsDetails');
-// Route::get('category/{Category}','HomeController@show');
-
-// Route::get('bookfinish/{id}','BookingController@finish');
-
-
-Route::get('/projects/index', 'HomeController@index');
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-Route::get('/callback', 'SocialAuthFacebookController@callback');
-
-Route::get('/home', 'HomeController@index')->name('home');
-//
-
 Route::middleware(['auth'])->group(function() {
-Route::get('/projects/myarticles', function () {
-	return view('/projects/myarticles');
-});
-Route::get('/bookings/bookfinish', function () {
-	return view('/bookings/bookfinish');
+	Route::get('layouts/index', 'DashboardController@index'); //To index/dashboard page after registratioonnn
 });
 
+// Route::get('category/{id}', 'HomeController@adsByCategory');
+
+// Route::post('/layouts/adsCategory', 'ArticleController@store');
+// Route::post('/projects', 'CategoryController@store');
+// Route::get('showDetail/{id}','HomeController@adsDetails');
+
+
+// Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+// Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 
 
-});
-Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
-Route::resource('/layouts', 'ArticleController');
+// Route::middleware(['auth'])->group(function() {
+// Route::get('/projects/myarticles', function () {
+// 	return view('/projects/myarticles');
+// });
+// Route::get('/bookings/bookfinish', function () {
+// 	return view('/bookings/bookfinish');
+// });
 
-Route::delete('article/{id}', 'admin\ArticleController@destroy');
-// Route::get('layouts/showCategory', 'CategoryController@show');
+// Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
+// Route::resource('/layouts', 'ArticleController');
 
-
-// Route::get('book/{id}', 'BookingController@index');
- Route::resource('/bookings', 'BookingController');
-//   Route::get('/layouts/bookfinish', 'BookingController@show');
-
-
-// Route::get('layouts/showfinish', 'BookingController@show');
-Route::post('/layouts/showDetail', 'BookingController@store');
+// Route::delete('article/{id}', 'admin\ArticleController@destroy');
+// // Route::get('layouts/showCategory', 'CategoryController@show');
 
 
+// // Route::get('book/{id}', 'BookingController@index');
+//  Route::resource('/bookings', 'BookingController');
+// //   Route::get('/layouts/bookfinish', 'BookingController@show');
 
 
+// // Route::get('layouts/showfinish', 'BookingController@show');
+// Route::post('/layouts/showDetail', 'BookingController@store');
 
-Route::middleware(['auth'])->group(function() {
-Route::get('/layouts/adsCategory', 'ArticleController@create');
 
-	// Route::resource('/projects', 'ArticleController');
-	Route::get('/dashboard', 'DashboardController@index');
-});
+// Route::middleware(['auth'])->group(function() {
+// Route::get('/layouts/adsCategory', 'ArticleController@create');
+
+// 	// Route::resource('/projects', 'ArticleController');
+// 	Route::get('/dashboard', 'DashboardController@index');
+// });
