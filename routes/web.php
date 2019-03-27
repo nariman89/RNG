@@ -10,10 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::view('/', 'welcome');
-
 Auth::routes();
+Route::view('/', 'welcome'); //First page
 
 Route::get('category/{id}', 'HomeController@adsByCategory');
 
