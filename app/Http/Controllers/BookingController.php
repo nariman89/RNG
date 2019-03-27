@@ -29,10 +29,10 @@ class BookingController extends Controller
 
 
 
-	// public function index(){
+	public function index(){
 
-    // //
-	// }
+    //
+	}
 	public function show(){
           $bookings =Booking::all();
         return view ('layouts/bookfinish', compact('$bookings'));
