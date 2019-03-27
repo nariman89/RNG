@@ -14,6 +14,7 @@ Auth::routes();
 Route::view('/', 'welcome'); //First page
 Route::middleware(['auth'])->group(function() {
 	Route::get('layouts/index', 'DashboardController@index'); //To index/dashboard page after registratioonnn
+	Route::get('/layouts/adsCategory', 'ArticleController@create');
 });
 
 // Route::get('category/{id}', 'HomeController@adsByCategory');
