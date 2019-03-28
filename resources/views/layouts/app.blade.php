@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
 						@auth
 							<li class="nav-item">
-								<a class="nav-link" href="/projects/index">Articles</a>
+								<a class="nav-link" href="/layouts/index">Articles</a>
 							</li>
 						@endauth
                     </ul>

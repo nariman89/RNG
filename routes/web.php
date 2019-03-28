@@ -17,11 +17,11 @@ Route::middleware(['auth'])->group(function() {
 	Route::get('/layouts/adsCategory', 'ArticleController@create');
 });
 
-// Route::get('category/{id}', 'HomeController@adsByCategory');
+Route::get('category/{id}', 'HomeController@adsByCategory');
 
-// Route::post('/layouts/adsCategory', 'ArticleController@store');
-// Route::post('/projects', 'CategoryController@store');
-// Route::get('showDetail/{id}','HomeController@adsDetails');
+Route::post('/layouts/adsCategory', 'ArticleController@store');
+Route::post('/projects', 'CategoryController@store');
+Route::get('showDetail/{id}','HomeController@adsDetails');
 
 
 // Route::get('/redirect', 'SocialAuthFacebookController@redirect');
@@ -29,33 +29,15 @@ Route::middleware(['auth'])->group(function() {
 
 
 
-// Route::middleware(['auth'])->group(function() {
-// Route::get('/projects/myarticles', function () {
-// 	return view('/projects/myarticles');
-// });
-// Route::get('/bookings/bookfinish', function () {
-// 	return view('/bookings/bookfinish');
-// });
+Route::middleware(['auth'])->group(function() {
+Route::get('/projects/myarticles', function () {
+	return view('/projects/myarticles');
+});
+Route::get('/bookings/bookfinish', function () {
+	return view('/bookings/bookfinish');
+});
 
-// Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
-// Route::resource('/layouts', 'ArticleController');
+Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
+Route::resource('/layouts', 'ArticleController');
+});
 
-// Route::delete('article/{id}', 'admin\ArticleController@destroy');
-// // Route::get('layouts/showCategory', 'CategoryController@show');
-
-
-// // Route::get('book/{id}', 'BookingController@index');
-//  Route::resource('/bookings', 'BookingController');
-// //   Route::get('/layouts/bookfinish', 'BookingController@show');
-
-
-// // Route::get('layouts/showfinish', 'BookingController@show');
-// Route::post('/layouts/showDetail', 'BookingController@store');
-
-
-// Route::middleware(['auth'])->group(function() {
-// Route::get('/layouts/adsCategory', 'ArticleController@create');
-
-// 	// Route::resource('/projects', 'ArticleController');
-// 	Route::get('/dashboard', 'DashboardController@index');
-// });
