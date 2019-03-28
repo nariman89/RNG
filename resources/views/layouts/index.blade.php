@@ -38,7 +38,7 @@
 
     </div>
 
-     {{--  {{$articles->links()}}  --}}
+      {{$articles->links()}}
 
   </div>
  </div>
