@@ -23,23 +23,16 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-
-
-
   public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
-
-
     }
     ////för att man kam inte lägga till en article innan man logga in
      public function index()
     {
       $articles=Article::select('article_id','name', 'rent_price', 'url' )
                       ->latest()
-                     ->paginate(10);
+                     ->paginate(6);
         return view('/layouts/index', ['articles' => $articles]);  //
 
     }
