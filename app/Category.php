@@ -20,9 +20,9 @@ protected $fillable = [
      *
      * @return void
      */
-    public function childs()
+    public function child()
     {
-        return $this->hasMany(Category::class, 'parent_id', 'id');
+        return $this->belongsTo(Category::class, 'parent_id', 'id');
     }
 }
 

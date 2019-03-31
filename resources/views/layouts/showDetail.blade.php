@@ -36,7 +36,7 @@ use Carbon\Carbon;
 		<div>
 			<div class="row">
 		<h2 class="text-info">City:</h2>
-		<h3 class="card-text"> {{$article->city_id}}</h3>
+		<h3 class="card-text"> {{$article->city_name}}</h3>
 		</div></div>
 		<div>
 			<div class="row">

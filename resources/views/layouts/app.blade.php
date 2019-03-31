@@ -106,23 +106,18 @@
 					<div class="col-2">
 
 					<h1 class="my-4">Category</h1>
-
-
 				  <div class="list-group ">
 					  <ul></ul>
 					  @foreach($items as $item)
 					<a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a>
 
 
-                {{-- `isNotEmpty` collection method was added in Laravel 5.3 --}}
-                @if($item->childs->isNotEmpty())
-                    @include('sub_category_list', [
-                        'childs' => $item->childs
-                    ])
-                @endif
+
+
+
             @endforeach
         </ul>
-					<a href="" class="list-group-item">Dator</a>
+			<a href="" class="list-group-item">Dator</a>
 				  </div>
 			  </div>
 				<div class="col-10">
