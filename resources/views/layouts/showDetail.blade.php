@@ -46,7 +46,7 @@ use Carbon\Carbon;
 		<button  onclick="myFunction()"> Book</button>
 		<div id="myDIV">
 			<div class="container mt-3">
-		<h1>Book an Article</h1>
+		<h1>Book The Article</h1>
 
 
 			{{csrf_field() }}
@@ -58,8 +58,8 @@ use Carbon\Carbon;
     </div>
 
 			<div class="form-group col-md-6">
-				<label for="rent_price">Pris</label>
-				<input type="text" name="rent_price" id="rent_price" class="form-control" placeholder="Exempel: 300">
+				<h3 class="card-title">Article Name:  {{$article->name}}</h3><hr>
+				<h3 class="card-text">Price: {{$article->rent_price }} kr</h3>
 			</div>
 			<div class="form-group col-md-6">
       <label for="name">First Name</label>
