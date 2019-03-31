@@ -36,9 +36,17 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
+{
+
+    $category = new Category;
+
+    $category->name = $request->get('name');
+
+    $category->save();
+
+    return \Redirect::route('categories.show', array($category->id));
+
+}
 
     /**
      * Display the specified resource.
@@ -47,9 +55,13 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
+{
+    //
+    $category = Category::find($id);
+    $message = "$category->name has been added succefully";
+
+    return $message;
+}
 
     /**
      * Show the form for editing the specified resource.

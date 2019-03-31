@@ -1,6 +1,21 @@
 @extends('back.layouts.master')
 
+<style>
+#myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: rgb(102, 151, 204);
+  margin-top: 20px;
+  display: none;
+}
+.container-detail{
+	margin-top: 40px;
+}
+</style>
 @section('content')
+@include('partials/validation_errors')
+@method('POST')
  <div class="row">
  	<div class="col-lg-12">
  		<h1 class="page-header">Articles</h1>
@@ -11,7 +26,27 @@
  		<div class="panel panel-default">
  			<div class="panel-heading text-right">
  				<button type="button" class="btn btn-sucess">Add A new User</button>
- 			</div>
+			 </div>
+			 {{-- <button type="button" class="btn btn-sucess"><a href="/back/article/createCat">Add A new Category</a></button> --}}
+			 <button  onclick="myFunction()"> Add A new Category</button>
+			 <div id="myDIV">
+			<div class="container mt-3">
+				{{csrf_field() }}
+
+<form method="POST" id="add-form" action="/admin/article">
+ {!! Form::open(array('files'=>true)) !!}
+
+<div class="form-group col-md-6">
+      <label for="name">Category Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+	</div>
+	<br>
+			<input type="submit" value="save" class="btn btn-primary">
+
+		{!!Form::close()!!}
+        </div>
+			</div>
+
  			<div class="panel-body">
 
  				<div class="table-responsive">

@@ -28,7 +28,10 @@ Route::get('showDetail/{id}','HomeController@adsDetails');
 // Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 
-
+Route::get('/categories', function () {
+    $categories = \App\Category::whereParentId(0)->get();
+    return view('layouts/index', compact('categories'));
+});
 Route::middleware(['auth'])->group(function() {
 Route::get('/projects/myarticles', function () {
 	return view('/projects/myarticles');
@@ -41,5 +44,6 @@ Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin
 Route::resource('/layouts', 'ArticleController');
 });
 Route::get('/layouts/index', 'ArticleController@index');
+
 
 

@@ -21,6 +21,41 @@
 
 			<input type="submit" value="Create New Project" class="btn btn-primary">
 		</form>
+		<h1>Create a Category</h1>
+
+{!! Form::open(
+array(
+    'route' => 'categories.store',
+    'class' => 'form')
+) !!}
+
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    There were some problems adding the category.<br />
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li></li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+<div class="form-group">
+    {!! Form::label('Category') !!}
+    {!! Form::text('name', null,
+    array(
+        'class'=>'form-control',
+        'placeholder'=>'List Name'
+    )) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::submit('Create Category!',
+    array('class'=>'btn btn-primary'
+    )) !!}
+</div>
+{!! Form::close() !!}
+</div>
 
 		<a href="/projects">&laquo; Back to all Articles</a>
 	</div>
