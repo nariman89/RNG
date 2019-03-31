@@ -21,11 +21,7 @@ class BookingController extends Controller
     {
         $this->middleware('auth');
     }
-    // public function index()
-    // {
 
-    // $articles=Article::all();
-	// return redirect('/layouts/showDetail', compact( $article->id));
 
 
 

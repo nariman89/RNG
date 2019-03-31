@@ -26,14 +26,14 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-        public function index()
-    {
-      $articles=Article::select('article_id','name', 'rent_price', 'url' )
-                      ->latest()
-                     ->paginate(10);
-        return view('/projects/index', ['articles' => $articles]);  //
+    //     public function index()
+    // {
+    //   $articles=Article::select('article_id','name', 'rent_price', 'url' )
+    //                   ->latest()
+    //                  ->paginate(10);
+    //     return view('/layouts/index', ['articles' => $articles]);  //
 
-    }
+    // }
        public function adsByCategory($id)
   {
 

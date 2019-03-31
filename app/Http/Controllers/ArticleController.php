@@ -22,10 +22,9 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-	  //
-	}
+
+
+
 
 
 
@@ -36,7 +35,14 @@ class ArticleController extends Controller
 
     }
     ////för att man kam inte lägga till en article innan man logga in
+     public function index()
+    {
+      $articles=Article::select('article_id','name', 'rent_price', 'url' )
+                      ->latest()
+                     ->paginate(10);
+        return view('/layouts/index', ['articles' => $articles]);  //
 
+    }
    public function create()
 
     {
@@ -69,7 +75,6 @@ class ArticleController extends Controller
 
     }
 //
-
     /**
      * Show the form for creating a new resource.
      *
@@ -82,18 +87,12 @@ public function show($id)
     return redirect('layouts.show',compact('articles'));
   }
 
-
-
-
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
 
     /**
      * Display the specified resource.
