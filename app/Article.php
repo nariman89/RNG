@@ -13,9 +13,8 @@ class Article extends Model
 
   protected $primaryKey = 'article_id';
 
-     protected $fillable=['name', 'descraption', 'rent_price','category_id', 'city_id', 'user_id', 'url'];
-
-
+	 protected $fillable=['name', 'descraption', 'rent_price','category_id', 'city_name
+	', 'user_id', 'url'];
 
 public function category() {
     	return $this->belongsTo(Category::class);

@@ -204,8 +204,9 @@ i.material-icons {
 				{{ Form::select('category_id',$categories,1,['class'=>'form-control'])}}
             </div>
             <div class="form-group">
-				<label for="city_id">Article City</label>
-				{{ Form::select('city_name',$cities,['class'=>'form-control'])}}
+				<label for="city_name">Article City</label>
+				<input type="text" name="city_name" id="city_name" class="form-control" placeholder="city_name">
+
 			</div>
 			 <div class="form-group">
 				<label for="url">Image</label>

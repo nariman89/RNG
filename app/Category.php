@@ -12,7 +12,7 @@ public function category() {
 	}
 	////create child category
 protected $fillable = [
-        'name', 'slug', 'parent_id'
+        'name', 'parent_id'
     ];
 
     /**
@@ -20,9 +20,9 @@ protected $fillable = [
      *
      * @return void
      */
-    public function child()
+    public function childs()
     {
-        return $this->belongsTo(Category::class, 'parent_id', 'id');
+        return $this->belongsTo(Category::class, 'parent_id', 'category_id');
     }
 }
 

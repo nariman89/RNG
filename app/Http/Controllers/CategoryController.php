@@ -16,9 +16,17 @@ class Category extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-    }
+{
+ $childs=Child::pluck('parent_id','name');
+
+$categories = Category1::all();
+    dd($categories->child->name);
+
+    return view('/layouts/app',['childs'=> $childs]);
+}
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +38,7 @@ class Category extends Controller
     $articles=Article::all()
                    ->$latest()
                    ->paginate(10);
-        return view::make('layouts/app', ['articles' => $articles]);
+        return view('layouts/app', ['articles' => $articles]);
     }
 		// dd($categories);
 

@@ -56,23 +56,23 @@ use Carbon\Carbon;
   <div class="form-row">
 			<input type="hidden" class="form-control col-md-6" id="article_id" name="article_id" value="{{$article->article_id}}">
     </div>
-
 			<div class="form-group col-md-6">
 				<h3 class="card-title">Article Name:  {{$article->name}}</h3><hr>
 				<h3 class="card-text">Price: {{$article->rent_price }} kr</h3>
 			</div>
+			<div class="row">
 			<div class="form-group col-md-6">
-      <label for="name">First Name</label>
+      <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
 	</div>
 	<div class="form-group col-md-6">
       <label for="city_name">City Name</label>
       <input type="text" class="form-control" id="city_name" name="city_name" placeholder="city_name" required>
 	</div>
-	<div class="form-group col-md-6">
-      <label for="adress">Adress Name</label>
+	{{-- <div class="form-group col-md-6">
+      <label for="adress">Adress </label>
       <input type="text" class="form-control" id="adress" name="adress" placeholder="Adress" required>
-    </div>
+    </div> --}}
 
 
  <div class="form-group col-md-6">

@@ -44,10 +44,6 @@ Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin
 Route::resource('/layouts', 'ArticleController');
 });
 Route::get('/layouts/index', 'ArticleController@index');
-Route::get('/layouts', function () {
-    $categories = \App\Category::whereParentId(0)->get();
-
-    return view('welcome', compact('categories'));
-});
+//
 
 
