@@ -49,7 +49,7 @@ class ArticleController extends Controller
         ////för att sätta dem i dropDown i form NA
         $categories=Category::pluck('category_name','category_id');
         // $cities=City::pluck('city_name','city_id');
-        $articles=Article::all();
+        // $articles=Article::all();
         return view('/layouts/adsCategory', [
             'categories' => $categories,
         ]);
