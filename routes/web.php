@@ -18,9 +18,12 @@ Route::middleware(['auth'])->group(function() {
 });
 
 Route::get('category/{id}', 'HomeController@adsByCategory');
+Route::get('layouts/{$article}', 'ArticleController@edit');
+
+Route::resource('/categories', 'CategoryController');
 
 
-// Route::post('/layouts/adsCategory', 'ArticleController@store');
+Route::post('/layouts/adsCategory', 'ArticleController@store');
 Route::post('/projects', 'CategoryController@store');
 Route::get('showDetail/{id}','HomeController@adsDetails');
 
@@ -38,8 +41,9 @@ Route::get('/bookings/bookfinish', function () {
 });
 
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
-Route::resource('/layouts', 'ArticleController');
 });
+Route::resource('/layouts', 'ArticleController');
+
 Route::get('/layouts/index', 'ArticleController@index');
 Route::get('/layouts/app', 'CategoryController@index');
 

@@ -15,6 +15,7 @@
 @section('content')
 @include('partials/validation_errors')
 @method('POST')
+
 @php
 use Carbon\Carbon;
 @endphp
@@ -36,14 +37,31 @@ use Carbon\Carbon;
 		<div>
 			<div class="row">
 		<h2 class="text-info">City:</h2>
-		<h3 class="card-text"> {{$article->city_name}}</h3>
+		<h3 class="card-text">{{$article->city}}</h3>
 		</div></div>
-		<div>
 			<div class="row">
     	<h2 class="text-info">Description:</h2>
 		<h2 class="card-text">{{$article->description}}</h2>
 		</div></div>
 		<button  onclick="myFunction()"> Book</button>
+		<div>
+		<br>
+ @if (Auth::check())
+@if ($article->user_id == Auth::user()->user_id)
+
+<div>
+<a href="/layouts/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
+<form method="post" action="/layouts/{{$article->id}}">
+	@csrf
+				@method('DELETE')
+
+				<input style="width:100%" type="submit" value="DELETE" class="btn btn-danger">
+			</form>
+</div>
+@endif
+@endif
+
+
 		<div id="myDIV">
 			<div class="container mt-3">
 		<h1>Book The Article</h1>
@@ -122,7 +140,7 @@ use Carbon\Carbon;
 
 
 
-		<a href="/projects/index">&laquo; Back to all articles</a>
+		<a href="/layouts/index">&laquo; Back to all articles</a>
 	</div>
 </div>
     </div>

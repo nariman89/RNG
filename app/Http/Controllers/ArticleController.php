@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\{
-         Article,
+	     Article,
          City,
          Category,
          Image
@@ -19,9 +19,7 @@ class ArticleController extends Controller
 		'rent_price' => 'required|integer',
 		'url'=> 'required|url',
 		'category_id'=> 'required',
-
-
-
+		 'city' => 'required|min:1',
 
     ];
     /**
@@ -41,7 +39,6 @@ class ArticleController extends Controller
                       ->latest()
                      ->paginate(6);
         return view('/layouts/index', ['articles' => $articles]);  //
-
     }
    public function create()
 
@@ -67,7 +64,7 @@ class ArticleController extends Controller
         $article->rent_price= $validData['rent_price'];
         $article->url = $validData['url'];
          $article->category_id=$validData['category_id'];
-       $article->city=$request->city;
+       $article->city=$$validData->city;
               $article->save();
 
                return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
@@ -107,13 +104,12 @@ public function show($id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-			$articles = Article::find($id);
-			$articles->edit();
 
-	        return redirect('/layouts/index' . $article->id);
-    }
+			return view('layouts/edit', ['article' => $article]);
+	}
+
 
     /**
      * Update the specified resource in storage.
@@ -122,14 +118,20 @@ public function show($id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-     $article->name = $request->name;
+        $article->user_id = Auth::user()->user_id;
+        $article->name = $request->name;
         $article->url = $request->url;
-        $article->rent_price = $request->rent_price;
+		$article->rent_price = $request->rent_price;
+		$article->city = $request->city;
+		$article->description = $request->description;
+		$article->category_id = $request->category_id;
+
+
         $article->save();
 
-	        return redirect('/layouts/index' . $article->id);
+	        return redirect('/layouts/' . $article->id);
 
     }
 
@@ -141,8 +143,6 @@ public function show($id)
      */
     public function destroy($id)
     {
-	$articles = Article::find($id);
-	$article->delete();
 	        return redirect('/layouts/index' . $article->id);
 
     }
