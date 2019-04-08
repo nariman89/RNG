@@ -1,4 +1,5 @@
 <?php
+////vi skrev redan rules i controller
 
 namespace App\Http\Requests;
 

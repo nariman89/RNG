@@ -14,8 +14,15 @@ use App\{
 class ArticleController extends Controller
 {
     protected $validation_rules = [
-        'name' => 'required|min:5',
-        'description' => 'required|min:5',
+        'name' => 'required|min:2',
+		'description' => 'required|min:2',
+		'rent_price' => 'required|integer',
+		'url'=> 'required|url',
+		'category_id'=> 'required',
+
+
+
+
     ];
     /**
      * Display a listing of the resource.
@@ -57,10 +64,10 @@ class ArticleController extends Controller
         $article->user_id = Auth::user()->user_id;
         $article->name = $validData['name'];
         $article->description = $validData['description'];
-        $article->rent_price=$request->rent_price;
-        $article->url = $request->url;
-         $article->category_id=$request->category_id;
-       $article->city_id=$request->city_id;
+        $article->rent_price= $validData['rent_price'];
+        $article->url = $validData['url'];
+         $article->category_id=$validData['category_id'];
+       $article->city=$request->city;
               $article->save();
 
                return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');

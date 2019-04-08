@@ -197,20 +197,18 @@ i.material-icons {
             <div class="form-group">
 				<label for="description">Article Description</label>
 				<input type="text" name="description" id="description" class="form-control" placeholder="Article description" required value="{{ old('description') }}">
-<!-- 				{!!Form::label('description', 'description:') !!}
- -->            </div>
            <div class="form-group">
 				<label for="category_id">Article category</label>
 				{{ Form::select('category_id',$categories,1,['class'=>'form-control'])}}
             </div>
             <div class="form-group">
 				<label for="city_name">Article City</label>
-				<input type="text" name="city_name" id="city_name" class="form-control" placeholder="city_name">
+				<input type="text" name="city_name" id="city_name" class="form-control" placeholder="city name" required value="{{ old('city_name') }}">
 
 			</div>
 			 <div class="form-group">
 				<label for="url">Image</label>
-				<input type="text" name="url" id="url" class="form-control" placeholder="URL">
+				<input type="text" name="url" id="url" class="form-control" placeholder="URL" required value="{{ old('url') }}">
 			</div>
    <button type="submit"  class="btn btn-primary">save</button>
 {!!Form::close()!!}
@@ -219,7 +217,7 @@ i.material-icons {
 
 
 
-       <a href="/ ">&laquo; Back to all projects</a>
+       <a href="/ ">&laquo; Back to all Articles</a>
 </div>
 @endsection
 
