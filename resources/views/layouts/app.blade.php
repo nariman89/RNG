@@ -18,78 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-<style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
-
-.navbar {
-  overflow: hidden;
-  background-color: #4b5c6b;
-}
-
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: blue;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.subnav {
-  float: left;
-  overflow: hidden;
-}
-
-.subnav .subnavbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: blue;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: whitesmoke;
-}
-
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: whitesmoke;
-  width: 100%;
-  z-index: 1;
-}
-
-.subnav-content a {
-  float: left;
-  color: black;
-  text-decoration: none;
-}
-
-.subnav-content a:hover {
-  background-color: #eee;
-  color: black;
-}
-
-.subnav:hover .subnav-content {
-  display: block;
-}
-</style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('RMG', 'RNG') }}
+                    {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -100,7 +35,7 @@ body {
                     <ul class="navbar-nav mr-auto">
 						@auth
 							<li class="nav-item">
-								<a class="nav-link" href="/layouts/index">Articles</a>
+								<a class="nav-link" href="/projects/index">Articles</a>
 							</li>
 						@endauth
                     </ul>
@@ -108,20 +43,6 @@ body {
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="/layouts/adsCategory">Add a new Article</a>
-                            </li>
-                        @endauth
-					</ul>
-					<ul class="navbar-nav mr-auto">
-                        @auth
-                            <li class="nav-item">
-                                <a class="nav-link" href="/bookings/bookfinish">My booking</a>
-                            </li>
-                        @endauth
-					</ul>
-					<ul class="navbar-nav mr-auto">
-                        @auth
-                            <li class="nav-item">
-                                <a class="nav-link" href="/projects/myarticles">MY Article</a>
                             </li>
                         @endauth
                     </ul>
@@ -160,7 +81,8 @@ body {
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+
+
                 </div>
             </div>
         </nav>
@@ -172,58 +94,12 @@ body {
 
 					<h1 class="my-4">Category</h1>
 
-					 {{-- `isNotEmpty` collection method was added in Laravel 5.3 --}}
-					 {{-- @if($item->childs->isNotEmpty()) --}}
-                    {{-- <a>@include('/layouts/sub_category_list', [
-                        'childs' => $item->childs
-                    ])</a> --}}
-				{{-- @endif --}}
-				 <form method="POST" id="add-form" action="/layouts/app">
-				{!! Form::open(array('files'=>true)) !!}
-			  <div class="form-group">
-				<div class="list-group ">
+
+				  <div class="list-group ">
 					  @foreach($items as $item)
-
-
-
-{{-- <h2>Hoverable Dropup</h2> --}}
-{{-- <p><a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a></p> --}}
-<div class="navbar">
-
-<div class="subnav">
-    <button class="subnavbtn"><a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a><i class="fa fa-caret-down"></i></button>
-    <div class="dropup-content">
-    <a href="#">{{$item->parent_id}}</a>
-
-  </div>
-  </div>
-
-
-
-
-{{-- <div class="dropup">
-  <button class="dropbtn"><a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a></button>
-  <div class="dropup-content">
-    <a href="#">{{$item->parent_id}}</a>
-
-  </div> --}}
-</div>
-@endforeach
-
-
-
-				{{-- <div class="form-group">
-				<label for="category_id"><a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a></label>
-				{{ Form::select ($item->parent_id)}}
-            </div>
-				{!!Form::close()!!}
-			   @endforeach --}}
-		</ul>
-
-
-			<a href="" class="list-group-item">Dator</a>
-
-				  </div>
+					<a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a>
+					@endforeach
+					<a href="" class="list-group-item">Dator</a>
 				  </div>
 			  </div>
 				<div class="col-10">
