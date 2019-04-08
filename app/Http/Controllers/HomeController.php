@@ -46,16 +46,16 @@ class HomeController extends Controller
         ///måste category_name som skickat =category _id
 
 	}
-	public function show(Category $category)
-  {
+// 	public function show(Category $category)
+//   {
 	// s
 	// $categories = Category::find($category);
 	// $categories = Category::All();
- $articles = Article::where('category_id', $category->id)->get();
+//  $articles = Article::where('category_id', $category->id)->get();
 	// 	return view ('projects/showCategory',['category' => $category, 'articles' => $articles ]);
 
-    return view ('projects/showCategory', compact('articles'));
-	 }
+    // return view ('projects/showCategory', compact('articles'));
+	//  }
 
 
     // public function show()

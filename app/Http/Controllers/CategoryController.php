@@ -15,16 +15,18 @@ class Category extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-{
- $childs=Child::pluck('parent_id','name');
+//     public function index()
+// {
+//  $categories=Category::where('parent_id', 0)->orderBy('category_name')->get();
 
-$categories = Category1::all();
-    dd($categories->child->name);
-
-    return view('/layouts/app',['childs'=> $childs]);
-}
-
+//     return view('/layouts/app',['categories'=> $categories]);
+// }
+public function index()
+    {
+        //
+        $categories = Category::where('parent_id', 0)->orderBy('name')->get();
+        return view('layouts/app', ['categories' => $categories]);
+    }
 
 
 
@@ -49,6 +51,8 @@ $categories = Category1::all();
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+		 ////only for admin
+
     public function store(Request $request)
     {
          $category = new Category;

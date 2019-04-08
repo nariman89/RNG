@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'RNG') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -110,8 +110,20 @@
 
 
 				  <div class="list-group ">
-					  @foreach($items as $item)
-					<a href="/category/{{$item->category_id}}" class="list-group-item">{{$item->category_name}}</a>
+					  @foreach($categories as $category)
+					<a href="/category/{{$category->category_id}}" class="list-group-item">{{$category->category_name}}</a>
+					  @if($category->categories()->exists())
+                        <ul>
+                            @foreach($category->categories()->orderBy('category_name')->get() as $subcategory)
+                                <li>
+                                    <a href="/category/{{ $subcategory->category_id }}">
+                                        {{ $subcategory->category_name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
 					@endforeach
 					<a href="" class="list-group-item">Dator</a>
 				  </div>

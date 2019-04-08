@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 protected $primaryKey = 'category_id';
-public function category() {
+public function articles() {
     	return $this->hasMany(Article::class);
 	}
 	////create child category
@@ -20,9 +20,9 @@ protected $fillable = [
      *
      * @return void
      */
-    public function childs()
+    public function categories()
     {
-        return $this->belongsTo(Category::class, 'parent_id', 'category_id');
+        return $this->hasMany(Category::class, 'parent_id', 'category_id');
     }
 }
 

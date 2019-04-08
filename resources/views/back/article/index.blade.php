@@ -1,7 +1,7 @@
 @extends('back.layouts.master')
 
 <style>
-#myDIV {
+#myDIVONE {
   width: 100%;
   padding: 50px 0;
   text-align: center;
@@ -29,7 +29,7 @@
 			 </div>
 			 {{-- <button type="button" class="btn btn-sucess"><a href="/back/article/createCat">Add A new Category</a></button> --}}
 			 <button  onclick="myFunction()"> Add A new Category</button>
-			 <div id="myDIV">
+			 <div id="myDIVONE">
 			<div class="container mt-3">
 				{{csrf_field() }}
 
@@ -115,3 +115,13 @@
 
 
 @endsection
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIVONE");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
