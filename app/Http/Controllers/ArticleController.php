@@ -21,6 +21,12 @@ class ArticleController extends Controller
 		'category_id'=> 'required',
 		 'city' => 'required|min:1',
 
+	];
+	protected $validation_rules2 = [
+        'name' => 'required|min:2',
+		'rent_price' => 'required|integer',
+		'url'=> 'required|url',
+
     ];
     /**
      * Display a listing of the resource.
@@ -120,15 +126,16 @@ public function show($id)
      */
     public function update(Request $request, Article $article)
     {
-        $article->user_id = Auth::user()->user_id;
+		$article->user_id = Auth::user()->user_id;
+
+        $validData = $request->validate($this->validation_rules2);
+
         $article->name = $request->name;
         $article->url = $request->url;
 		$article->rent_price = $request->rent_price;
 		$article->city = $request->city;
 		$article->description = $request->description;
 		$article->category_id = $request->category_id;
-
-
         $article->save();
 
 	        return redirect('/layouts/' . $article->id);
