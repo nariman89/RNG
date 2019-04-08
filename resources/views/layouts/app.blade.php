@@ -35,7 +35,7 @@
                     <ul class="navbar-nav mr-auto">
 						@auth
 							<li class="nav-item">
-								<a class="nav-link" href="/projects/index">Articles</a>
+								<a class="nav-link" href="/layouts/index">Articles</a>
 							</li>
 						@endauth
                     </ul>
@@ -43,6 +43,20 @@
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="/layouts/adsCategory">Add a new Article</a>
+							</li>
+							 @endauth
+					</ul>
+					<ul class="navbar-nav mr-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/bookings/bookfinish">My booking</a>
+                            </li>
+                        @endauth
+					</ul>
+					<ul class="navbar-nav mr-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/projects/myarticles">MY Article</a>
                             </li>
                         @endauth
                     </ul>
