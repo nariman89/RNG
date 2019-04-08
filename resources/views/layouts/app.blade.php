@@ -95,41 +95,37 @@
                                 </div>
                             </li>
                         @endguest
-
-
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
-			<div class="container ">
-				<div class="row">
-					<div class="col-2">
+     <main class="py-4">
+		<div class="container ">
+		  <div class="row">
+			<div class="col-2">
+				<h1 class="my-4">Category</h1>
+			   <div class="list-group ">
+				@foreach($categories as $category)
+			      <a href="/category/{{$category->category_id}}" >{{$category->category_name}}</a>
+				  @if($category->categories()->exists())
+				    <ul>
+					 @foreach($category->categories()->orderBy('category_name')->get() as $subcategory)
+						<li>
+							<a href="/category/{{ $subcategory->category_id }}" >
+								{{ $subcategory->category_name }}
+							</a>
+						</li>
+					 @endforeach
+				    </ul>
+			         @endif
 
-					<h1 class="my-4">Category</h1>
-
-
-				  <div class="list-group ">
-					  @foreach($categories as $category)
-					<a href="/category/{{$category->category_id}}" class="list-group-item">{{$category->category_name}}</a>
-					  @if($category->categories()->exists())
-                        <ul>
-                            @foreach($category->categories()->orderBy('category_name')->get() as $subcategory)
-                                <li>
-                                    <a href="/category/{{ $subcategory->category_id }}">
-                                        {{ $subcategory->category_name }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-					@endforeach
-					<a href="" class="list-group-item">Dator</a>
-				  </div>
+			@endforeach
+		{{-- jag läggt den bara för att visa gruppen var måste finnas category --}}
+			<a href="" >Dator</a>
+			</div>
 			  </div>
-				<div class="col-10">
-            @yield('content')
+	<div class="col-10">
+        @yield('content')
 		</main>
 		</div>
 		</div>
