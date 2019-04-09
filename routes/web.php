@@ -14,7 +14,7 @@ Auth::routes();
 Route::view('/', 'welcome'); //First page
 Route::middleware(['auth'])->group(function() {
 	Route::get('layouts/index', 'DashboardController@index'); //To index/dashboard page after registratioonnn
-	Route::get('/layouts/adsCategory', 'ArticleController@create');
+	Route::get('/layouts/adsArticle', 'ArticleController@create');
 });
 
 Route::get('category/{id}', 'HomeController@adsByCategory');
@@ -23,7 +23,7 @@ Route::get('layouts/{$article}', 'ArticleController@edit');
 Route::resource('/categories', 'CategoryController');
 
 
-Route::post('/layouts/adsCategory', 'ArticleController@store');
+Route::post('/layouts/adsArticle', 'ArticleController@store');
 Route::post('/projects', 'CategoryController@store');
 Route::get('showDetail/{id}','HomeController@adsDetails');
 

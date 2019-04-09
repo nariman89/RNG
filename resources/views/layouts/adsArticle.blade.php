@@ -174,8 +174,9 @@ i.material-icons {
 @section('content')
 @include('partials/validation_errors')
         <form method="POST" id="add-form" action="/layouts/adsCategory">
-<!--             {{csrf_field() }}
- -->
+
+            {{csrf_field() }}
+
 <!-- för the massage efter adding NA
  -->@if(session()->has('message'))
     <div class="alert alert-success">
@@ -184,7 +185,7 @@ i.material-icons {
 @endif
 
             {!! Form::open(array('files'=>true)) !!}
-             <!--  jag skriv array för att låta användare ladda upp fler bilder/ ska bli sakert att koden aktiveras NA -->
+            
 			<div class="form-group">
 				<label for="name">Article Name</label>
 				<input type="text" name="name" id="name" class="form-control" placeholder="Article Name" required value="{{ old('name') }}">
@@ -202,8 +203,8 @@ i.material-icons {
 				{{ Form::select('category_id',$categories,1,['class'=>'form-control'])}}
             </div>
             <div class="form-group">
-				<label for="city_name">Article City</label>
-				<input type="text" name="city_name" id="city_name" class="form-control" placeholder="city name" required value="{{ old('city_name') }}">
+				<label for="city">Article City</label>
+				<input type="text" name="city" id="city" class="form-control" placeholder="city name" required value="{{ old('city') }}">
 
 			</div>
 			 <div class="form-group">

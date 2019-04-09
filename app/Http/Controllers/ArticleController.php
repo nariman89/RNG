@@ -53,7 +53,7 @@ class ArticleController extends Controller
         $categories=Category::pluck('category_name','category_id');
         // $cities=City::pluck('city_name','city_id');
         // $articles=Article::all();
-        return view('/layouts/adsCategory', [
+        return view('/layouts/adsArticle', [
             'categories' => $categories,
         ]);
     }
@@ -69,11 +69,11 @@ class ArticleController extends Controller
         $article->description = $validData['description'];
         $article->rent_price= $validData['rent_price'];
         $article->url = $validData['url'];
-         $article->category_id=$validData['category_id'];
-       $article->city=$$validData->city;
-              $article->save();
+        $article->category_id=$validData['category_id'];
+        $article->city=$validData['city'];
+        $article->save();
 
-               return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
+        return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
 
     }
 //

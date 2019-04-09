@@ -67,10 +67,11 @@ use Carbon\Carbon;
 		<h1>Book The Article</h1>
 
 
-			{{csrf_field() }}
+			 {{csrf_field() }}
 
 <form method="POST" id="add-form" action="/bookings/bookfinish">
  {!! Form::open(array('files'=>true)) !!}
+      
   <div class="form-row">
 			<input type="hidden" class="form-control col-md-6" id="article_id" name="article_id" value="{{$article->article_id}}">
     </div>

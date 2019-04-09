@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('url');
             $table->bigInteger('rent_price')->nullable();
              $table->bigInteger('category_id')->unsigned();
-             $table->bigInteger('city')->nullable();
+             $table->text('city')->nullable();
              $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
         });
