@@ -10,7 +10,7 @@ $articles = Article::where('article_id', auth()->id())->get();
 	<div class="container mt-3">
 		<h1>Edit Article: {{$article->name}}</h1>
 
-		<form method="POST" action="/layouts/edit">
+		<form method="POST" action="/layouts/{{ $article->id }}">
 
 			@csrf
 			@method('PATCH')

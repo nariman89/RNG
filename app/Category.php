@@ -1,8 +1,11 @@
 <?php
 
 namespace App;
+use App\Category;
+use App\Article;
 
 use Illuminate\Database\Eloquent\Model;
+
 
 class Category extends Model
 {

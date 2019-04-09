@@ -173,9 +173,9 @@ i.material-icons {
 </style>
 @section('content')
 @include('partials/validation_errors')
-        <form method="POST" id="add-form" action="/layouts/adsCategory">
+        <form method="POST" id="add-form" action="/layouts/adsArticle">
 
-            {{csrf_field() }}
+            {{-- {{csrf_field() }} --}}
 
 <!-- för the massage efter adding NA
  -->@if(session()->has('message'))
@@ -185,7 +185,7 @@ i.material-icons {
 @endif
 
             {!! Form::open(array('files'=>true)) !!}
-            
+
 			<div class="form-group">
 				<label for="name">Article Name</label>
 				<input type="text" name="name" id="name" class="form-control" placeholder="Article Name" required value="{{ old('name') }}">

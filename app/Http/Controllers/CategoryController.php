@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\{
-         Article,
-         City
+		 Article,
+		 City
+
         };
 
 class Category extends Controller
@@ -42,7 +44,12 @@ public function index()
                    ->paginate(10);
         return view('layouts/app', ['articles' => $articles]);
     }
-		// dd($categories);
+// 		public function adsByCategory($id)
+//   {
+// 		$articles = Article::where('category_id', $id)->get();
+// 			  return view ('projects/showCategory', compact('articles'));
+
+//   }
 
 
     /**

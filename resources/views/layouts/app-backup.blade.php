@@ -7,7 +7,7 @@
 
 	<link rel="stylesheet" href="/css/app.css">
 
-	<title>@yield('title', 'Rent My Gear')</title>
+	<title>@yield('title', 'RNG')</title>
 </head>
 <body>
 

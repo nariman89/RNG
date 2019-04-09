@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\{
 	     Article,
          City,
-         Category,
-         Image
+         Category
         };
 
 
@@ -56,7 +55,13 @@ class ArticleController extends Controller
         return view('/layouts/adsArticle', [
             'categories' => $categories,
         ]);
-    }
+	}
+	public function adsByCategory($id)
+  {
+		$articles = Article::where('category_id', $id)->get();
+			  return view ('projects/showCategory', compact('articles'));
+}
+//   }
 
      public function store(Request $request)  ////to save data från db to form
     {
@@ -115,7 +120,12 @@ public function show($id)
 
 			return view('layouts/edit', ['article' => $article]);
 	}
+public function adsDetails($id){
 
+		$article=Article::find($id);
+		$articles=Article::all();
+        return view ('layouts/showDetail', compact('article'));
+    }
 
     /**
      * Update the specified resource in storage.

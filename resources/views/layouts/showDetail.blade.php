@@ -22,11 +22,11 @@ use Carbon\Carbon;
  <div class="container text-left mt-20">
 	<h3 class="card-title"> {{$article->name}}</h3><hr>
 
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+   @if(session()->has('message'))
+      <div class="alert alert-success">
+         {{ session()->get('message') }}
+      </div>
+    @endif
     <div class="card-body">
 		<img class="img-thumbnail card-img-top" alt="Cinque Terre" width="304" height="350px" src="{{$article->url }}" alt="image" >
 		{{-- <p class="card-text">User Name {{$article->user->name}}</p> --}}
@@ -40,28 +40,25 @@ use Carbon\Carbon;
 		<h3 class="card-text">{{$article->city}}</h3>
 		</div></div>
 			<div class="row">
-    	<h2 class="text-info">Description:</h2>
-		<h2 class="card-text">{{$article->description}}</h2>
+    	      <h2 class="text-info">Description:</h2>
+		      <h2 class="card-text">{{$article->description}}</h2>
 		</div></div>
 		<button  onclick="myFunction()"> Book</button>
 		<div>
-		<br>
- @if (Auth::check())
-@if ($article->user_id == Auth::user()->user_id)
+	<br>
+      @if (Auth::check())
+      @if ($article->user_id == Auth::user()->user_id)
 
-<div>
-<a href="/layouts/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
-<form method="post" action="/layouts/{{$article->id}}">
+     <div>
+     <a href="/layouts/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
+    <form method="post" action="/layouts/{{$article->id}}">
 	@csrf
 				@method('DELETE')
-
 				<input style="width:100%" type="submit" value="DELETE" class="btn btn-danger">
 			</form>
 </div>
 @endif
 @endif
-
-
 		<div id="myDIV">
 			<div class="container mt-3">
 		<h1>Book The Article</h1>
@@ -71,7 +68,7 @@ use Carbon\Carbon;
 
 <form method="POST" id="add-form" action="/bookings/bookfinish">
  {!! Form::open(array('files'=>true)) !!}
-      
+
   <div class="form-row">
 			<input type="hidden" class="form-control col-md-6" id="article_id" name="article_id" value="{{$article->article_id}}">
     </div>
@@ -146,12 +143,7 @@ use Carbon\Carbon;
 </div>
     </div>
 	</div>
-
-
 	</div>
-
-
-
 @endsection
 
 <script>
