@@ -69,7 +69,7 @@ use Carbon\Carbon;
 
 			{{csrf_field() }}
 
-<form method="POST" id="add-form" action="/layouts/showDetail">
+<form method="POST" id="add-form" action="/bookings/bookfinish">
  {!! Form::open(array('files'=>true)) !!}
   <div class="form-row">
 			<input type="hidden" class="form-control col-md-6" id="article_id" name="article_id" value="{{$article->article_id}}">

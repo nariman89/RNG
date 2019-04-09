@@ -148,7 +148,7 @@ public function show($id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
 	        return redirect('/layouts/index' . $article->id);
 

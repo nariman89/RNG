@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials/validation_errors')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -38,19 +40,29 @@
                                 @endif
                             </div>
 						</div>
-						<div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefonnummer') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="phone" type="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('Telefonnummer') }}" required>
+						<div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('phone') }}</label>
+                         <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus>
+
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
+                            {{-- <div class="col-md-6">
+                                <input id="phone" type="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{old('Telefonnummer') }}" required>
+                            </div>
+                        </div> --}}
 
                           <div class="form-group row">
                             <label for="adress" class="col-md-4 col-form-label text-md-right">{{ __('Adress') }}</label>
 
                             <div class="col-md-6">
-                                <input id="adress" type="adress" class="form-control{{ $errors->has('adress') ? ' is-invalid' : '' }}" name="adress" value="{{ old('Adress') }}" required>
+                                <input id="adress" type="adress" class="form-control{{ $errors->has('adress') ? ' is-invalid' : '' }}" name="adress" value="{{ old('adress') }}" required>
                             </div>
                         </div>
 
@@ -58,7 +70,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('City') }}" required>
+                                <input id="city" type="city" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" required>
                             </div>
                         </div>
 

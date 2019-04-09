@@ -42,7 +42,7 @@ Route::get('/bookings/bookfinish', function () {
 
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
 });
-Route::resource('/layouts', 'ArticleController');
+Route::resource('/layouts/', 'ArticleController');
 
 Route::get('/layouts/index', 'ArticleController@index');
 Route::get('/layouts/app', 'CategoryController@index');

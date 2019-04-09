@@ -18,7 +18,7 @@ class CreateBookingsTable extends Migration
             $table->bigInteger('article_id')->unsigned();
             $table->string('name');
             $table->text('adress')->nullable();
-            $table->text('city_name')->nullable();
+            $table->text('city')->nullable();
             $table->bigInteger('phone')->default();
             $table->string('email')->unique();
             $table->date('date_start');
