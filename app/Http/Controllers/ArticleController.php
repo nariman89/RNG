@@ -27,7 +27,7 @@ class ArticleController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    ////för att man kam inte lägga till en article innan man logga in
+    ////för att man kan inte lägga till en article innan man logga in
      public function index()
     {
       $articles=Article::select('article_id','name', 'rent_price', 'url' )
