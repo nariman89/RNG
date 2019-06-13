@@ -26,9 +26,6 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/projects/myarticles', function () {
 	return view('/projects/myarticles');
 });
-// Route::get('/bookings/bookfinish', function () {
-// 	return view('/bookings/bookfinish');
-// });
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
 });
 Route::resource('/layouts/', 'ArticleController');

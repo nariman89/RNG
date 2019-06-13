@@ -51,20 +51,19 @@ class BookingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //dd($request->all());
-    // $monthly_email_date = Carbon::now()->startOfMonth();
-		$booking = new Booking();
-		 $booking->article_id = $request->article_id;
-       $booking->name = $request->name;
-       $booking->adress = $request->adress;
-       $booking->city = $request->city;
+     {
+        $booking = new Booking();
+		$booking->article_id = $request->article_id;
+        $booking->name = $request->name;
+        $booking->adress = $request->adress;
+        $booking->city = $request->city;
 		$booking->email = $request->email;
         $booking->phone = $request->phone;
         $booking->date_start = $request->date_start;
         $booking->date_end = $request->date_end;
         $booking->save();
-	        return redirect('/bookings/bookfinish/' . $booking->id);
+	        return redirect('/bookings/bookfinish/' . $booking->id)->with('message', 'Thank you for your booking😎😎😎😎😎!
+		Welcome back 😍');;
 
 		// return redirect()->back()->with('message', 'Thank you for your booking😎😎😎😎😎!
 		// Welcome back 😍');
