@@ -26,19 +26,16 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/projects/myarticles', function () {
 	return view('/projects/myarticles');
 });
-Route::get('/bookings/bookfinish', function () {
-	return view('/bookings/bookfinish');
-});
+// Route::get('/bookings/bookfinish', function () {
+// 	return view('/bookings/bookfinish');
+// });
 Route::resource('admin/article', 'admin\ArticleController')->middleware('Isadmin');
 });
 Route::resource('/layouts/', 'ArticleController');
 Route::get('/layouts/index', 'ArticleController@index');
 Route::get('/layouts/app', 'CategoryController@index');
+Route::resource('/bookings/bookfinish', 'BookingController');
 
 
-
-Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-Route::get('/callback', 'SocialAuthFacebookController@callback');
-//
 
 

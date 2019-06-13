@@ -29,10 +29,10 @@ class BookingController extends Controller
 
     //
 	}
-	public function show(Booking $booking){
-          $bookings =Booking::all();
-        return view ('layouts/bookfinish', compact('$bookings'));
-    }
+	// public function show(Booking $booking){
+    //       $bookings =Booking::all();
+    //     return view ('layouts/bookfinish', compact('$bookings'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -64,7 +64,7 @@ class BookingController extends Controller
         $booking->date_start = $request->date_start;
         $booking->date_end = $request->date_end;
         $booking->save();
-	        return redirect('/bookings/bookfinish' . $booking->id);
+	        return redirect('/bookings/bookfinish/' . $booking->id);
 
 		// return redirect()->back()->with('message', 'Thank you for your booking😎😎😎😎😎!
 		// Welcome back 😍');
@@ -77,12 +77,12 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    // public function show(Booking $booking)
-    // {
-	// 	$booking=Booking::all();
-    //     return view('projects/myarticles', ['booking' => $booking]);
+    public function show(Booking $booking)
+    {
+		$booking=Booking::all();
+        return view('bookings/bookfinish', ['booking' => $booking]);
 
-	// }
+	}
 
 
 
