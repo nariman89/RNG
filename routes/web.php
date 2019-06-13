@@ -15,8 +15,10 @@ Route::view('/', 'welcome'); //First page
 Route::middleware(['auth'])->group(function() {
 Route::get('/layouts/adsArticle', 'ArticleController@create');
 });
+Route::get('/layouts/index', 'PageController@index');
+
 Route::get('/category/{id}', 'ArticleController@adsByCategory');
-Route::get('layouts/{$article}', 'ArticleController@edit');
+Route::get('/layouts/{article}', 'ArticleController@edit');
 Route::resource('/categories', 'CategoryController');
 Route::post('/layouts/adsArticle', 'ArticleController@store');
  Route::get('showDetail/{id}','ArticleController@adsDetails');
@@ -34,11 +36,9 @@ Route::get('/layouts/index', 'ArticleController@index');
 Route::get('/layouts/app', 'CategoryController@index');
 
 
-// Route::get('/redirect', 'SocialAuthFacebookController@redirect');
-// Route::get('/callback', 'SocialAuthFacebookController@callback');
 
-
-
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
 //
 
 

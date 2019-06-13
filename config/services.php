@@ -20,10 +20,9 @@ return [
 
 'facebook' => [
 
-    'client_id' => '846840225660756
-',
+    'client_id'  => '846840225660756',
     'client_secret' => 'f89fb6d53ba16723e9dbb4060d617dc8',
-    'redirect' => 'http://rng.test/projects/index',
+    'redirect' => 'http://rng.test',
 ],
 
     'mailgun' => [

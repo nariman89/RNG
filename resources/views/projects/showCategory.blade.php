@@ -1,19 +1,10 @@
 @extends('layouts/app')
 
 @section('content')
-{{-- @php
-use App\Category;
-$categories = Category::where('article_id', auth()->id())->get();
-@endphp --}}
+{{-- to show category when we click --}}
 
   <div class="container cl-sm-3 text-center">
   <div class="row">
-			 {{-- @foreach($articles as $article)
-			 @php
-				$img=$article->image->first
-			 @endphp --}}
-
-        {{-- <h1>{{ $category->name }}</h1> --}}
 		<br>
 
 {{-- <h5>All Articles in {{ $category->name }} category</h5> --}}

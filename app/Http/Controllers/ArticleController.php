@@ -117,7 +117,6 @@ public function show($id)
      */
     public function edit(Article $article)
     {
-
 			return view('layouts/edit', ['article' => $article]);
 	}
 public function adsDetails($id){

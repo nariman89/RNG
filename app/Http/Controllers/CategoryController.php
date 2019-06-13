@@ -17,15 +17,14 @@ class Category extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//     public function index()
-// {
-//  $categories=Category::where('parent_id', 0)->orderBy('category_name')->get();
-
-//     return view('/layouts/app',['categories'=> $categories]);
-// }
+//
+public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index']]);
+    }
 public function index()
     {
-        //
+
         $categories = Category::where('parent_id', 0)->orderBy('name')->get();
         return view('layouts/app', ['categories' => $categories]);
     }
@@ -44,12 +43,7 @@ public function index()
                    ->paginate(10);
         return view('layouts/app', ['articles' => $articles]);
     }
-// 		public function adsByCategory($id)
-//   {
-// 		$articles = Article::where('category_id', $id)->get();
-// 			  return view ('projects/showCategory', compact('articles'));
-
-//   }
+//
 
 
     /**
@@ -62,7 +56,7 @@ public function index()
 
     public function store(Request $request)
     {
-         $category = new Category;
+         $category = new Category();
 
     $category->name = $request->get('name');
 

@@ -11,7 +11,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">User Name</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -64,7 +64,8 @@
                         <br />
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                              <a href="{{url('/redirect')}}" class="btn btn-primary">Login with Facebook</a>
+                              <a href="{{url('/Auth/facebook')}} " class="btn btn-primary btn-block">
+                                    Login with facebook</a>
                             </div>
                         </div>
                     </form>

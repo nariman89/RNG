@@ -1,5 +1,5 @@
 <?php
-
+////jag har den här sida för admin om jag vill lägga till mer function till admin
 namespace App\Http\Controllers\Admin;
 use App\Article;
 use Auth;

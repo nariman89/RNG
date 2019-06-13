@@ -3,14 +3,13 @@
 @php
 use App\Article;
 $articles = Article::where('article_id', auth()->id())->get();
-
 		// @if ($article->user_id == Auth::user()->id)
 @endphp
 
 	<div class="container mt-3">
 		<h1>Edit Article: {{$article->name}}</h1>
 
-		<form method="POST" action="/layouts/{{ $article->id }}">
+		<form method="POST" action="/layouts/edit">
 
 			@csrf
 			@method('PATCH')

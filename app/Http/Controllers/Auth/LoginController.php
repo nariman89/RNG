@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
+use Auth;
+use App\user;
 
 class LoginController extends Controller
 {
@@ -36,10 +39,15 @@ class LoginController extends Controller
     public function __construct()
 
 {
-    $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
+    $this->middleware('guest')->except('logout');
+    // $this->middleware('guest', ['except' => ['logout', 'getLogout']]);
 }
-public function username()
+ public function username()
 
-{
-return "name";}
+ {
+ return "name";}
+
 }
+
+
+    

@@ -47,14 +47,14 @@ use Carbon\Carbon;
 		<div>
 	<br>
       @if (Auth::check())
-      @if ($article->user_id == Auth::user()->user_id)
-
-     <div>
-     <a href="/layouts/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
-    <form method="post" action="/layouts/{{$article->id}}">
+	  @if ($article->user_id == Auth::user()->user_id)
+    <div>
+<a href="/layouts/{{$article->article_id}}" class="btn btn-warning" style="width:100%">Edit Article</a>
+<form method="POST" action="/layouts/{{$article->id}}">
 	@csrf
-				@method('DELETE')
-				<input style="width:100%" type="submit" value="DELETE" class="btn btn-danger">
+
+	@method('DELETE')
+		<input style="width:100%" type="submit" value="DELETE" class="btn btn-danger">
 			</form>
 </div>
 @endif
@@ -85,11 +85,6 @@ use Carbon\Carbon;
       <label for="city_name">City Name</label>
       <input type="text" class="form-control" id="city_name" name="city_name" placeholder="city_name" required>
 	</div>
-	{{-- <div class="form-group col-md-6">
-      <label for="adress">Adress </label>
-      <input type="text" class="form-control" id="adress" name="adress" placeholder="Adress" required>
-    </div> --}}
-
 
  <div class="form-group col-md-6">
       <label for="date_start">Date Start</label>
