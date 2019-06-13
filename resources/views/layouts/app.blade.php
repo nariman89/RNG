@@ -35,14 +35,14 @@
                     <ul class="navbar-nav mr-auto">
 						@auth
 							<li class="nav-item">
-								<a class="nav-link" href="/layouts/index">Articles</a>
+								<a class="nav-link" href="/article/index">Articles</a>
 							</li>
 						@endauth
                     </ul>
                      <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="/layouts/adsArticle">Add a new Article</a>
+                                <a class="nav-link" href="/article/adsArticle">Add a new Article</a>
 							</li>
 							 @endauth
 					</ul>
