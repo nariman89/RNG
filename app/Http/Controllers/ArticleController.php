@@ -37,13 +37,7 @@ use App\{
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     ////för att man kam inte lägga till en article innan man logga in
-     public function index()
-    {
-      $articles=Article::select('article_id','name', 'rent_price', 'url' )
-            ->latest()
-            ->paginate(6);
-        return view('/article/index', ['articles' => $articles]);  
-    }
+     
     /**
      * Show the form for creating a new resource.
      *
@@ -142,7 +136,7 @@ use App\{
     //    return redirect('/article');
     
 		$article->delete();
-		return redirect('/article')->with('status', 'Project successfully deleted 😅!');
+		return redirect('/article')->with('message', 'Article successfully deleted 😅!');
 	}
 }
 

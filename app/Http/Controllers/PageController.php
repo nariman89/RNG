@@ -11,7 +11,13 @@ use App\{
 class PageController extends Controller
 {
 	public function index() {
-		return view('/layouts/index'); // To index page after registratioonnn
+		
+    {
+      $articles=Article::select('article_id','name', 'rent_price', 'url' )
+            ->latest()
+            ->paginate(6);
+        return view('/article/index', ['articles' => $articles]);  
+    }
 	}
 	public function adsByCategory($id)
      {
