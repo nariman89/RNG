@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\{
 		 Article,
 		 City
-
         };
 
 class Category extends Controller
@@ -29,7 +28,7 @@ public function index()
         return view('layouts/app', ['categories' => $categories]);
     }
 
-
+   
 
     /**
      * Show the form for creating a new resource.

@@ -44,6 +44,11 @@ use App\{
             ->paginate(6);
         return view('/article/index', ['articles' => $articles]);  
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
    public function create()
     {
         ////för att sätta dem i dropDown i form NA
@@ -52,14 +57,14 @@ use App\{
             'categories' => $categories,
         ]);
 	}
-	public function adsByCategory($id)
-     {
-	$articles = Article::where('category_id', $id)->get();
-	return view ('projects/showCategory', compact('articles'));
-    }
+	/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request) 
     {
-		//spara article
 		///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
         $article=Article::create($request->all()+ ['user_id'=>$request->user()->user_id]);
         $validData = $request->validate($this->validation_rules);
@@ -86,20 +91,6 @@ use App\{
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -107,25 +98,25 @@ use App\{
      */
     public function edit(Article $article)
     {
-		return view('article/edit', ['article' => $article]);
+		return view('article/edit', ['article'=>$article]);
 	}
     public function adsDetails($id)
     {
 		$article=Article::find($id);
 		$articles=Article::all();
-        return view ('article/showDetail', compact('article'));
+        return view('article/showDetail', compact('article'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Article $article)
     {
-		$article->user_id = Auth::user()->user_id;
+		// $article->user_id = Auth::user()->user_id;
         $validData = $request->validate($this->validation_rules2);
         $article->name = $request->name;
         $article->url = $request->url;
@@ -134,17 +125,25 @@ use App\{
 		$article->description = $request->description;
 		$article->category_id = $request->category_id;
         $article->save();
-	    return redirect('/article/' . $article->id);
+	    return view('article.showDetail', compact('article'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
     public function destroy(Article $article)
     {
-	   return redirect('/article/index' . $article->id);
-    }
+    //     $article=Article::find($id);
+	// 	$articles=Article::all();
+    //     $article->delete();
+    //    return redirect('/article');
+    
+		$article->delete();
+		return redirect('/article')->with('status', 'Project successfully deleted 😅!');
+	}
 }
+
+    

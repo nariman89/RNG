@@ -1,61 +1,47 @@
 @extends('layouts/app')
-<style>
-#myDIV {
-  width: 100%;
-  padding: 50px 0;
-  text-align: center;
-  background-color: rgb(102, 151, 204);
-  margin-top: 20px;
-  display: none;
-}
-.container-detail{
-	margin-top: 40px;
-}
-</style>
 @section('content')
 @include('partials/validation_errors')
 @method('POST')
-
 @php
 use Carbon\Carbon;
 @endphp
- <div class="container text-left mt-20">
-	<h3 class="card-title"> {{$article->name}}</h3><hr>
-
+  <link href="{{ asset('css/showDetail.css') }}" rel="stylesheet">
+  <div class="container text-left mt-20">
+	  <h3 class="card-title"> {{$article->name}}</h3><hr>
    @if(session()->has('message'))
       <div class="alert alert-success">
          {{ session()->get('message') }}
       </div>
     @endif
+
     <div class="card-body">
-		<img class="img-thumbnail card-img-top" alt="Cinque Terre" width="304" height="350px" src="{{$article->url }}" alt="image" >
-		{{-- <p class="card-text">User Name {{$article->user->name}}</p> --}}
+		  <img class="img-thumbnail card-img-top" alt="Cinque Terre" width="304" height="350px" src="{{$article->url }}" alt="image" >
+    </div>
 		<div class="container-detail">
 			<div class="row"  >
-		<h2 class="text-info">Price:</h2>
-		<h2 class="card-text">{{$article->rent_price }} kr</h2></div></div>
-		<div>
-			<div class="row">
-		<h2 class="text-info">City:</h2>
-		<h3 class="card-text">{{$article->city}}</h3>
-		</div></div>
-			<div class="row">
+		    <h2 class="text-info">Price:</h2>
+		    <h2 class="card-text">{{$article->rent_price }} kr</h2>
+    </div>
+		<div class="row">
+		  <h2 class="text-info">City:</h2>
+		  <h3 class="card-text">{{$article->city}}</h3>
+		</div>
+		<div class="row">
     	      <h2 class="text-info">Description:</h2>
 		      <h2 class="card-text">{{$article->description}}</h2>
-		</div></div>
+		</div>
 		<button  onclick="myFunction()"> Book</button>
-		<div>
 	<br>
       @if (Auth::check())
 	  @if ($article->user_id == Auth::user()->user_id)
     <div>
-<a href="/layouts/{{$article->article_id}}" class="btn btn-warning" style="width:100%">Edit Article</a>
-<form method="POST" action="/layouts/{{$article->id}}">
-	@csrf
+<a href="/article/{{$article->article_id}}" class="btn btn-warning" style="width:100%">Edit Article</a>
+<form method="POST" action="/article/{{$article->article_id}}">
+						@csrf
+						@method('DELETE')
 
-	@method('DELETE')
-		<input style="width:100%" type="submit" value="DELETE" class="btn btn-danger">
-			</form>
+						<input type="submit" value="Delete article" class="btn btn-danger">
+					</form>
 </div>
 @endif
 @endif
@@ -85,20 +71,19 @@ use Carbon\Carbon;
       <label for="city_name">City Name</label>
       <input type="text" class="form-control" id="city_name" name="city_name" placeholder="city_name" required>
 	</div>
-
- <div class="form-group col-md-6">
-      <label for="date_start">Date Start</label>
-      <select class="form-control" name="date_start">
-        <option>{{ Carbon::now()->addDay(0) }}</option>
-        <option>{{ Carbon::now()->addDay(1) }}</option>
-        <option>{{ Carbon::now()->addDay(2) }}</option>
-        <option>{{ Carbon::now()->addDay(3) }}</option>
-        <option>{{ Carbon::now()->addDay(4) }}</option>
-        <option>{{ Carbon::now()->addDay(5) }}</option>
-        <option>{{ Carbon::now()->addDay(6) }}</option>
-        <option>{{ Carbon::now()->addDay(7) }}</option>
-      </select>
-    </div>
+  <div class="form-group col-md-6">
+    <label for="date_start">Date Start</label>
+    <select class="form-control" name="date_start">
+      <option>{{ Carbon::now()->addDay(0) }}</option>
+      <option>{{ Carbon::now()->addDay(1) }}</option>
+      <option>{{ Carbon::now()->addDay(2) }}</option>
+      <option>{{ Carbon::now()->addDay(3) }}</option>
+      <option>{{ Carbon::now()->addDay(4) }}</option>
+      <option>{{ Carbon::now()->addDay(5) }}</option>
+      <option>{{ Carbon::now()->addDay(6) }}</option>
+      <option>{{ Carbon::now()->addDay(7) }}</option>
+    </select>
+  </div>
 
     <div class="form-group col-md-6">
       <label for="date_end">Date End</label>
@@ -120,25 +105,16 @@ use Carbon\Carbon;
 			<div class="form-group col-md-6">
       <label for="phone">PHONE NUMBER</label>
       <input type="phone" class="form-control" id="phone" name="phone" placeholder="+467000000" required>
-    </div>
-     <div class="form-group">
+      </div>
+      <div class="form-group">
 				<input type="hidden" name="user_id" id="user_id" class="form-control" placeholder="User_id">
-	</div>
-
-
-<br>
-			<input type="submit" value="save" class="btn btn-primary">
-
+	    </div>
+    <br>
+    
+		<input style="margin:20px" type="submit" value="save" class="btn btn-primary">
 		{!!Form::close()!!}
-
-
-
-		<a href="/layouts/index">&laquo; Back to all articles</a>
-	</div>
-</div>
-    </div>
-	</div>
-	</div>
+    <br>
+		<a href="/article/index">&laquo; Back to all articles</a>
 @endsection
 
 <script>
