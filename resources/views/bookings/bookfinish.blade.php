@@ -3,6 +3,7 @@
 @section('content')
 @php
 use App\Booking;
+
 $bookings = Booking::where('article_id', auth()->id())->get();
 @endphp
 <div class="container mt-3">
@@ -25,6 +26,7 @@ $bookings = Booking::where('article_id', auth()->id())->get();
 <p><strong>Date Start:</strong> {{ $booking->date_start }}</p>
 <p><strong>Date End:</strong> {{ $booking->date_end }}</p>
 
+	
 
 @endforeach
 

@@ -34,10 +34,16 @@ use App\{
 
   public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => [ 'show']]);
     }
     ////för att man kam inte lägga till en article innan man logga in
+     public function index()
+    {
      
+		$articles=Article::paginate(9);
+        return view('back/article/index', compact('articles'));
+    
+    }
     /**
      * Show the form for creating a new resource.
      *

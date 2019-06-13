@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +14,9 @@ Route::view('/', 'welcome'); //First page
 Route::middleware(['auth'])->group(function() {
 Route::get('/article/adsArticle', 'ArticleController@create');
 });
+Route::post('/article/adsArticle', 'ArticleController@store');
 Route::get('/article/index', 'PageController@index');
-
 Route::get('/category/{id}', 'PageController@adsByCategory');
-
-
-
 Route::resource('/categories', 'CategoryController');
  Route::get('showDetail/{id}','ArticleController@adsDetails');
 Route::middleware(['auth'])->group(function() {
@@ -29,9 +25,8 @@ Route::get('/projects/myarticles', function () {
 });
 });
 Route::resource('/article', 'ArticleController');
-Route::get('/article/app', 'CategoryController@index');
+Route::get('/article/app', 'PageController@index');
 Route::resource('/bookings/bookfinish', 'BookingController');
 
-
-
+Route::resource('admin/article', 'ArticleController')->middleware('Isadmin');
 

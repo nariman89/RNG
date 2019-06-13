@@ -37,10 +37,7 @@ public function index()
      */
      public function create()  ///to call create Article
 {
-    $articles=Article::all()
-                   ->$latest()
-                   ->paginate(10);
-        return view('layouts/app', ['articles' => $articles]);
+    //
     }
 //
 
@@ -55,13 +52,7 @@ public function index()
 
     public function store(Request $request)
     {
-         $category = new Category();
-
-    $category->name = $request->get('name');
-
-    $category->save();
-
-    return \Redirect::route('categories.show', array($category->id));
+        //
     }
 
     /**
