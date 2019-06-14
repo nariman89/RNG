@@ -39,10 +39,8 @@ use App\{
     ////för att man kam inte lägga till en article innan man logga in
      public function index()
     {
-     
 		$articles=Article::paginate(9);
         return view('back/article/index', compact('articles'));
-    
     }
     /**
      * Show the form for creating a new resource.
@@ -56,7 +54,7 @@ use App\{
         return view('/article/adsArticle', [
             'categories' => $categories,
         ]);
-	}
+	  }
 	/**
      * Store a newly created resource in storage.
      *
@@ -117,14 +115,14 @@ use App\{
     public function update(Request $request, Article $article)
     {
 		// $article->user_id = Auth::user()->user_id;
-        $validData = $request->validate($this->validation_rules2);
-        $article->name = $request->name;
-        $article->url = $request->url;
+    $validData = $request->validate($this->validation_rules2);
+    $article->name = $request->name;
+    $article->url = $request->url;
 		$article->rent_price = $request->rent_price;
 		$article->city = $request->city;
 		$article->description = $request->description;
 		$article->category_id = $request->category_id;
-        $article->save();
+    $article->save();
 	    return view('article.showDetail', compact('article'));
     }
 
@@ -136,11 +134,6 @@ use App\{
      */
     public function destroy(Article $article)
     {
-    //     $article=Article::find($id);
-	// 	$articles=Article::all();
-    //     $article->delete();
-    //    return redirect('/article');
-    
 		$article->delete();
 		return redirect('/article')->with('message', 'Article successfully deleted 😅!');
 	}

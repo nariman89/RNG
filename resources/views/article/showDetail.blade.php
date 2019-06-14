@@ -27,49 +27,44 @@ use Carbon\Carbon;
 		  <h3 class="card-text">{{$article->city}}</h3>
 		</div>
 		<div class="row">
-    	      <h2 class="text-info">Description:</h2>
+    	    <h2 class="text-info">Description:</h2>
 		      <h2 class="card-text">{{$article->description}}</h2>
 		</div>
 		<button  onclick="myFunction()"> Book</button>
 	<br>
-      @if (Auth::check())
+    @if (Auth::check())
 	  @if ($article->user_id == Auth::user()->user_id)
     <div>
 <a href="/article/{{$article->article_id}}" class="btn btn-warning" style="width:100%">Edit Article</a>
-<form method="POST" action="/article/{{$article->article_id}}">
-						@csrf
-						@method('DELETE')
-
-						<input type="submit" value="Delete article" class="btn btn-danger">
-					</form>
-</div>
-@endif
-@endif
+  <form method="POST" action="/article/{{$article->article_id}}">
+		@csrf
+		@method('DELETE')
+			<input type="submit" value="Delete article" class="btn btn-danger">
+	</form>
+  </div>
+    @endif
+    @endif
 		<div id="myDIV">
 			<div class="container mt-3">
 		<h1>Book The Article</h1>
-
-
 			 {{csrf_field() }}
-
-<form method="POST" id="add-form" action="/bookings/bookfinish">
- {!! Form::open(array('files'=>true)) !!}
-
-  <div class="form-row">
-			<input type="hidden" class="form-control col-md-6" id="article_id" name="article_id" value="{{$article->article_id}}">
-    </div>
+  <form method="POST" id="add-form" action="/bookings/bookfinish">
+        {!! Form::open(array('files'=>true)) !!}
+      <div class="form-row">
+			  <input type="hidden" class="form-control col-md-6" id="article_id" name="article_id" value="{{$article->article_id}}">
+      </div>
 			<div class="form-group col-md-6">
 				<h3 class="card-title">Article Name:  {{$article->name}}</h3><hr>
 				<h3 class="card-text">Price: {{$article->rent_price }} kr</h3>
 			</div>
 			<div class="row">
 			<div class="form-group col-md-6">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-	</div>
-	<div class="form-group col-md-6">
-      <label for="city_name">City Name</label>
-      <input type="text" class="form-control" id="city_name" name="city_name" placeholder="city_name" required>
+        <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+	    </div>
+	    <div class="form-group col-md-6">
+        <label for="city_name">City Name</label>
+          <input type="text" class="form-control" id="city_name" name="city_name" placeholder="city_name" required>
 	</div>
   <div class="form-group col-md-6">
     <label for="date_start">Date Start</label>
@@ -100,17 +95,16 @@ use Carbon\Carbon;
     </div>
 			<div class="form-group col-md-6">
 				<label for="email">Email</label>
-				<input type="text" name="email" id="email" class="form-control" placeholder="exempel@exempel.com">
+				 <input type="text" name="email" id="email" class="form-control" placeholder="exempel@exempel.com">
 			</div>
 			<div class="form-group col-md-6">
-      <label for="phone">PHONE NUMBER</label>
-      <input type="phone" class="form-control" id="phone" name="phone" placeholder="+467000000" required>
+        <label for="phone">PHONE NUMBER</label>
+         <input type="phone" class="form-control" id="phone" name="phone" placeholder="+467000000" required>
       </div>
       <div class="form-group">
 				<input type="hidden" name="user_id" id="user_id" class="form-control" placeholder="User_id">
 	    </div>
     <br>
-    
 		<input style="margin:20px" type="submit" value="save" class="btn btn-primary">
 		{!!Form::close()!!}
     <br>
