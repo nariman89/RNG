@@ -20,7 +20,7 @@ class Isadmin
             return $next($request);
      }
 
-    return redirect('projects/index');
+    return redirect('back/article/index');
 }
 }
 

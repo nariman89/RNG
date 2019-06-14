@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 use Auth;
-use Illuminate\Http\Request;
 use App\{
-	     Article,
-         City,
-         Category
+       Article,
+       Category
         };
+use Illuminate\Http\Request;
+
 
   class ArticleController extends Controller
    {
@@ -29,6 +29,7 @@ use App\{
     /**
      * Display a listing of the resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
 
@@ -36,12 +37,22 @@ use App\{
     {
         $this->middleware('auth', ['except' => [ 'show']]);
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  int  $id
+
+     * @return \Illuminate\Http\Response
+     */
     ////för att man kam inte lägga till en article innan man logga in
      public function index()
     {
-		$articles=Article::paginate(9);
-        return view('back/article/index', compact('articles'));
+		$articles=Article::select('article_id','name', 'rent_price', 'url' )
+            ->latest()
+            ->paginate(6);
+        return view('/article/index', ['articles' => $articles]);  
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -51,10 +62,13 @@ use App\{
     {
         ////för att sätta dem i dropDown i form NA
         $categories=Category::pluck('category_name','category_id');
-        return view('/article/adsArticle', [
-            'categories' => $categories,
-        ]);
-	  }
+        return view('/article/adsArticle',  compact('categories'));
+    }
+    public function adsByCategory($id)
+     {
+	$articles = Article::where('category_id', $id)->get();
+	return view ('projects/showCategory', compact('articles'));
+    }
 	/**
      * Store a newly created resource in storage.
      *

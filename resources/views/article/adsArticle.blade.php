@@ -9,6 +9,7 @@
         {{ session()->get('message') }}
     </div>
   @endif
+
     {!! Form::open(array('files'=>true)) !!}
 			<div class="form-group">
 				<label for="name">Article Name</label>
@@ -38,6 +39,7 @@
 				<input type="text" name="url" id="url" class="form-control" placeholder="URL" required value="{{ old('url') }}">
 			</div>
     <button type="submit"  class="btn btn-primary">save</button>
+    
     {!!Form::close()!!}
     <a href="/ ">&laquo; Back to all Articles</a>
   @endsection

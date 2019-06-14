@@ -21,18 +21,9 @@ class BookingController extends Controller
     {
         $this->middleware('auth');
     }
-
-
-
-
 	public function index(){
-
-    //
-	}
-	// public function show(Booking $booking){
-    //       $bookings =Booking::all();
-    //     return view ('layouts/bookfinish', compact('$bookings'));
-    // }
+        //
+    	}
 
     /**
      * Show the form for creating a new resource.

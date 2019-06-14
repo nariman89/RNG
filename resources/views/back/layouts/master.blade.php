@@ -27,6 +27,8 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand navbar-left" margin="20px" href="#">Rent Ur Gear</a>
+				 <a href="/" class="btn btn-warning" style="width:100%">Front</a>
+
     </div>
 
 

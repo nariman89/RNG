@@ -60,6 +60,13 @@
                             </li>
                         @endauth
                     </ul>
+                    @if (Auth::user() &&  Auth::user()->role_id != 2) 
+    <div>
+<a href="/admin/article/" class="btn btn-warning" style="width:100%">Admin</a>
+  
+  </div>
+    
+    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -2,7 +2,7 @@
 
 @section('content')
 {{-- to show category when we click --}}
-
+@foreach($articles as $article)
   <div class="container cl-sm-3 text-center">
      <div class="row">
 		  <br>

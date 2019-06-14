@@ -15,18 +15,11 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/article/adsArticle', 'ArticleController@create');
 });
 Route::post('/article/adsArticle', 'ArticleController@store');
-Route::get('/article/index', 'PageController@index');
 Route::get('/category/{id}', 'PageController@adsByCategory');
-Route::resource('/categories', 'CategoryController');
  Route::get('showDetail/{id}','ArticleController@adsDetails');
-Route::middleware(['auth'])->group(function() {
-Route::get('/projects/myarticles', function () {
-	return view('/projects/myarticles');
-});
-});
-Route::resource('/article', 'ArticleController');
-Route::get('/article/app', 'PageController@index');
-Route::resource('/bookings/bookfinish', 'BookingController');
 
-Route::resource('admin/article', 'ArticleController')->middleware('Isadmin');
+Route::get('/projects/myarticles', 'PageController@show');
+Route::resource('/article', 'ArticleController');
+Route::resource('/bookings/bookfinish', 'BookingController');
+Route::get('admin/article ', 'PageController@admin')->middleware('Isadmin');
 

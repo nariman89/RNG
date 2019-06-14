@@ -5,20 +5,22 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\{
-		 Article
+         Article
         };
 
 class PageController extends Controller
 {
-	public function index() {
-		
+	public function index()
     {
-      $articles=Article::select('article_id','name', 'rent_price', 'url' )
-            ->latest()
-            ->paginate(6);
-        return view('/article/index', ['articles' => $articles]);  
+	//
     }
+    public function admin()
+    {
+	 $articles=Article::paginate(9);
+        return view('back/article/index', compact('articles'));
     }
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -35,5 +37,9 @@ class PageController extends Controller
      {
 	$articles = Article::where('category_id', $id)->get();
 	return view ('projects/showCategory', compact('articles'));
+    }
+    public function show(Article $article)
+      {
+        return view('projects/myarticles',compact('articles'));
     }
 }
