@@ -27,6 +27,7 @@
       </div>
       <div class="form-group">
 				<label for="category_id">Article category</label>
+        
 				{{ Form::select('category_id',$categories,1,['class'=>'form-control'])}}
       </div>
       <div class="form-group">

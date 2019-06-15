@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\{
        Article,
@@ -18,7 +16,6 @@ class CategoryController extends Controller
     {
         return view('back/article/createCat');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +26,6 @@ class CategoryController extends Controller
         $categories = Category::all();
         return view('back/article/createCat',compact('categories'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -37,19 +33,20 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
+        //only admin can create a new Category
         $category=Category::create([ 
-    'category_name'=> request('category_name')
+         'category_name'=> request('category_name')
     
 ]);
         $this->validate($request,[
            'category_name'=>'required',
         ]);
-        $category->category_name = $request->input('category_name');
+        $category->category_name = $request->category_name;
         $category->save();
+        
         return redirect()->back()->with('success', 'Service Successfully Added');
     }
-
     /**
      * Display the specified resource.
      *
@@ -60,7 +57,6 @@ class CategoryController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,7 +67,6 @@ class CategoryController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -83,7 +78,6 @@ class CategoryController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -94,4 +88,8 @@ class CategoryController extends Controller
     {
         //
     }
+    
+
+
 }
+

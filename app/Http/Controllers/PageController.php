@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\{
-         Article
+         Article,
+         Category
         };
 
 class PageController extends Controller
@@ -17,7 +18,7 @@ class PageController extends Controller
     public function admin()
     {
 	 $articles=Article::paginate(9);
-        return view('back/article/index', compact('articles'));
+        return view('back/article/index', compact('articles', 'categories'));
     }
     
     

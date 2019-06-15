@@ -26,6 +26,7 @@ Route::resource('/bookings/bookfinish', 'BookingController');
 Route::get('admin/article ', 'PageController@admin')->middleware('Isadmin');
 Route::get('/back/article/createCat', 'CategoryController@index');
 Route::post('/admin/article', 'CategoryController@store');
+Route::view('back/article/createCat ', 'CategoryController@manageCategory');
 
 
 

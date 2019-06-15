@@ -66,8 +66,8 @@ use Illuminate\Http\Request;
     }
     public function adsByCategory($id)
      {
-	$articles = Article::where('category_id', $id)->get();
-	return view ('projects/showCategory', compact('articles'));
+	      $articles = Article::where('category_id', $id)->get();
+	      return view ('projects/showCategory', compact('articles'));
     }
 	/**
      * Store a newly created resource in storage.
