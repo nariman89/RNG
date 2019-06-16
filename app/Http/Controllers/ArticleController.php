@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 use Auth;
+
 use App\{
        Article,
        Category
         };
 use Illuminate\Http\Request;
 
-
-  class ArticleController extends Controller
-   {
+class ArticleController extends Controller
+    {
     protected $validation_rules = [
         'name' => 'required|min:2',
 		'description' => 'required|min:2',
@@ -26,58 +26,44 @@ use Illuminate\Http\Request;
 		'url'=> 'required|url',
 
     ];
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-  public function __construct()
+    public function __construct()
     {
         $this->middleware('auth', ['except' => [ 'show']]);
     }
     /**
      * Display a listing of the resource.
      *
-     * @param  int  $id
-
      * @return \Illuminate\Http\Response
      */
-    ////för att man kam inte lägga till en article innan man logga in
-     public function index()
+    public function index()
     {
-		$articles=Article::select('article_id','name', 'rent_price', 'url' )
-            ->latest()
-            ->paginate(6);
-        return view('/article/index', ['articles' => $articles]);  
+    $articles=Article::select('article_id','name', 'rent_price', 'url' )
+        ->latest()
+        ->paginate(6);
+    return view('/article/index', ['articles' => $articles]);  
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-   public function create()
+    public function create()
     {
         ////för att sätta dem i dropDown i form NA
-        $categories=Category::pluck('category_name','category_id');
+        $categories=Category::pluck('name','category_id');
         return view('/article/adsArticle',  compact('categories'));
     }
-    public function adsByCategory($id)
-     {
-	      $articles = Article::where('category_id', $id)->get();
-	      return view ('projects/showCategory', compact('articles'));
-    }
-	/**
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
-		///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
+        ///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
         $article=Article::create($request->all()+ ['user_id'=>$request->user()->user_id]);
         $validData = $request->validate($this->validation_rules);
         $article->user_id = Auth::user()->user_id;
@@ -90,14 +76,15 @@ use Illuminate\Http\Request;
         $article->save();
         return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
     }
+
     /**
-     * Show the form for creating a new resource.
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
     public function show($id)
-      {
+    {
         $articles = Article::find($id);
         return redirect('article.show',compact('articles'));
     }
@@ -108,49 +95,47 @@ use Illuminate\Http\Request;
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
-		return view('article/edit', ['article'=>$article]);
-	}
-    public function adsDetails($id)
-    {
-		$article=Article::find($id);
-		$articles=Article::all();
-        return view('article/showDetail', compact('article'));
+        return view('article/edit', ['article'=>$article]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-		// $article->user_id = Auth::user()->user_id;
+        // $article->user_id = Auth::user()->user_id;
     $validData = $request->validate($this->validation_rules2);
     $article->name = $request->name;
     $article->url = $request->url;
-		$article->rent_price = $request->rent_price;
-		$article->city = $request->city;
-		$article->description = $request->description;
-		$article->category_id = $request->category_id;
+    $article->rent_price = $request->rent_price;
+    $article->city = $request->city;
+    $article->description = $request->description;
+    $article->category_id = $request->category_id;
     $article->save();
-	    return view('article.showDetail', compact('article'));
+	return view('article.showDetail', compact('article'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Article  $article
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function destroy($id)
     {
-		$article->delete();
+        $article->delete();
 		return redirect('/article')->with('message', 'Article successfully deleted 😅!');
-	}
+    }
+    public function adsDetails($id)
+    {
+		$article=Article::find($id);
+		$articles=Article::all();
+        return view('article/showDetail', compact('article'));
+    }
 }
-
-    

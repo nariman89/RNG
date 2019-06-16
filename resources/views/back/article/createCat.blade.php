@@ -12,11 +12,15 @@
   @endif
 	
 		{!! Form::open() !!}
+		@csrf
 			<div class="form-group">
-				<label for="category_name">category name</label>
-				  <input type="text" name="category_name" id="name" class="form-control" placeholder="category_name" required value="{{old('category_name')}}">
-					  
+				<label for="name">category name</label>
+				  <input type="text" name="name" id="name" class="form-control" placeholder="name" required value="{{old('name')}}">
+					 
       </div>
+			{{Form::select('parent_id',$categories,1,['class'=>'form-control'])}}
+				
+                               
         <button type="submit"  class="btn btn-primary">save</button>
     {!!Form::close()!!}
 			</div>

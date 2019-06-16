@@ -113,13 +113,13 @@
 				<h1 class="my-4">Category</h1>
 			   <div class="list-group ">
 				@foreach($categories as $category)
-			      <a href="/category/{{$category->category_id}}" >{{$category->category_name}}</a>
+			      <a href="/category/{{$category->category_id}}" >{{$category->name}}</a>
 				  @if($category->categories()->exists())
 				    <ul>
-					 @foreach($category->categories()->orderBy('category_name')->get() as $subcategory)
+					 @foreach($category->categories()->orderBy('name')->get() as $subcategory)
 						<li>
 							<a href="/category/{{ $subcategory->category_id }}" >
-								{{ $subcategory->category_name }}
+								{{ $subcategory->name }}
 							</a>
 						</li>
 					 @endforeach
@@ -127,6 +127,7 @@
 			         @endif
 
 			@endforeach
+            <?php dump($category->parent_id); ?>  
 		{{-- jag läggt den bara för att visa gruppen var måste finnas category --}}
 			<a href="" >Dator</a>
 			</div>

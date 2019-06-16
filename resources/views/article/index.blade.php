@@ -25,6 +25,7 @@
 			  <a href="/showDetail/{{$article->article_id}}">{{$article->name}}</a>
 		     </h5>
 			   <h6>{{ $article->rent_price }} kr</h6>
+				
 			<button><a href="/showDetail/{{$article->article_id}}">Read More</a></button>
 		  </div>
 		 </div>

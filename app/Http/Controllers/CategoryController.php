@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('back/article/createCat');
+        $categories = Category::where('parent_id', 0)->orderBy('name')->get();
+        return view('back/article/createCat', ['categories' => $categories]);
     }
     /**
      * Show the form for creating a new resource.
@@ -23,8 +24,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return view('back/article/createCat',compact('categories'));
+        $categories=Category::pluck('name','category_id');
+        return view('/back/article/createCat',  compact('categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -36,13 +37,17 @@ class CategoryController extends Controller
     { 
         //only admin can create a new Category
         $category=Category::create([ 
-         'category_name'=> request('category_name')
+         'name'=> request('name'),
+        'parent_id'=>request('parent_id'),
+
     
 ]);
         $this->validate($request,[
-           'category_name'=>'required',
+           'name'=>'required',
+           'parent_id'=>'required',
         ]);
-        $category->category_name = $request->category_name;
+        $category->name = $request->name;
+        $category->parent_id = $request->parent_id;
         $category->save();
         
         return redirect()->back()->with('success', 'Service Successfully Added');
