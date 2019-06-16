@@ -21,10 +21,6 @@
 
 
 	     @foreach($articles as $article)
-			
-							
-
-
 	       <div class="card" style="margin:20px; max-width: 40%; border:1px solid black;">
 	         <a href="/showDetail/{{$article->article_id}}"><img class="card-img-top"  height="150px" src="{{$article->url }}" alt="image" ></a> 
 		    <div class="card-body">

@@ -126,7 +126,6 @@
 			         @endif
 
 			@endforeach
-            <?php dump($category->parent_id); ?>  
 		{{-- jag läggt den bara för att visa gruppen var måste finnas category --}}
 			<a href="" >Dator</a>
 			</div>

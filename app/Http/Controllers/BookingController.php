@@ -11,6 +11,15 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
+    protected $validation_rules = [
+        'name' => 'required|min:2',
+		'adress' => 'required|min:2',
+		'phone' => 'required|integer',
+        'email'=> 'required|email',
+        'city'=> 'required|min:1',
+		
+
+	];
     /**
      * Display a listing of the resource.
      *
@@ -44,12 +53,13 @@ class BookingController extends Controller
     public function store(Request $request)
      {
         $booking = new Booking();
-		$booking->article_id = $request->article_id;
-        $booking->name = $request->name;
-        $booking->adress = $request->adress;
-        $booking->city = $request->city;
-		$booking->email = $request->email;
-        $booking->phone = $request->phone;
+        $validData = $request->validate($this->validation_rules);
+		$booking->article_id = $validate->article_id;
+        $booking->name = $validate['name'];
+        $booking->adress = $validate['adress'];
+        $booking->city = $validate['city'];
+		$booking->email = $validate['email'];
+        $booking->phone = $validate['phone'];
         $booking->date_start = $request->date_start;
         $booking->date_end = $request->date_end;
         $booking->save();

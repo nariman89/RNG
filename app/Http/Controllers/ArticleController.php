@@ -84,7 +84,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
 
     {
 	  //
@@ -98,6 +98,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
+        $article=Article::find($id);
         return view('article/edit', ['article'=>$article]);
     }
 
@@ -108,13 +109,13 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-    // $article->user_id = Auth::user()->user_id;
     $validData = $request->validate($this->validation_rules2);
-    $article->name = $request->name;
-    $article->url = $request->url;
-    $article->rent_price = $request->rent_price;
+    $article->user_id = Auth::user()->user_id;
+    $article->name = $validData['name'];
+    $article->url = $validData['url'];
+    $article->rent_price = $validData['rent_price'];
     $article->city = $request->city;
     $article->description = $request->description;
     $article->category_id = $request->category_id;
