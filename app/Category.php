@@ -2,14 +2,15 @@
 
 namespace App;
 
+use App\Category;
 use App\Article;
+
 
 use Illuminate\Database\Eloquent\Model;
 
 
 class Category extends Model
 {
-protected $primaryKey = 'category_id';
 public function articles() {
     	return $this->hasMany(Article::class);
 	}
@@ -27,5 +28,6 @@ protected $fillable = [
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
+     
 }
 

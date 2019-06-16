@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-use App\Admin;
 use App\User;
 use App\Category;
+
 
 use Illuminate\Database\Eloquent\Model;
 use App\Http\Requests\ArticleRequest;

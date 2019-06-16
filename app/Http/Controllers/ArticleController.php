@@ -37,6 +37,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
+       
     $articles=Article::select('article_id','name', 'rent_price', 'url' )
         ->latest()
         ->paginate(6);
@@ -83,10 +84,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
+
     {
-        $articles = Article::find($id);
-        return redirect('article.show',compact('articles'));
+	  //
     }
 
     /**
@@ -109,7 +110,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $article->user_id = Auth::user()->user_id;
+    // $article->user_id = Auth::user()->user_id;
     $validData = $request->validate($this->validation_rules2);
     $article->name = $request->name;
     $article->url = $request->url;
@@ -134,8 +135,8 @@ class ArticleController extends Controller
     }
     public function adsDetails($id)
     {
+        //kunde inte använda Model Binding
 		$article=Article::find($id);
-		$articles=Article::all();
         return view('article/showDetail', compact('article'));
     }
 }

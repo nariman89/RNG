@@ -24,6 +24,7 @@
         <button type="submit"  class="btn btn-primary">save</button>
     {!!Form::close()!!}
 			</div>
+		
 </div>
 		<a href="/projects">&laquo; Back to all Articles</a>
 	</div>

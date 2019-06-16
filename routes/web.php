@@ -11,10 +11,11 @@
 */
 Auth::routes();
 Route::view('/', 'welcome'); //First page
-Route::middleware(['auth'])->group(function() {
-Route::get('/article/adsArticle', 'ArticleController@create');
-});
+
 Route::get('/article/index', 'ArticleController@index');
+//det går inte att ta bort den här route fast vi har en resource route
+Route::get('/article/adsArticle', 'ArticleController@create');
+
 
 Route::post('/article/adsArticle', 'ArticleController@store');
 Route::get('/category/{id}', 'PageController@adsByCategory');
