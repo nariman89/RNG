@@ -26,7 +26,7 @@ protected $fillable = [
      */
     public function categories()
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id', 'category_id');
     }
      
 }

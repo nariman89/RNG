@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::where('parent_id', 0)->orderBy('name')->get();
-        return view('back/article/createCat', ['categories' => $categories]);
+        return view('admin/article', ['categories' => $categories]);
     }
     /**
      * Show the form for creating a new resource.
@@ -49,8 +49,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         $category->save();
-        
-        return redirect()->back()->with('success', 'Service Successfully Added');
+        return redirect()->back()->with (compact('category'));
     }
     /**
      * Display the specified resource.
@@ -81,7 +80,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $category->user_id = Auth::user()->user_id;
+    $category->name = $validData['name'];
+    $category->parent_id = $validData['parent_id'];
+    
+    $category->save();
+	return view('.index', compact('category'));
     }
     /**
      * Remove the specified resource from storage.

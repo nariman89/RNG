@@ -20,6 +20,21 @@
  	<div class="col-lg-12">
  		<h1 class="page-header">Articles</h1>
  	</div>
+	  <div class="list-group ">
+				@foreach($categories as $category)
+			      <a href="/category/{{$category->category_id}}" >{{$category->name}}</a>
+				  @if($category->categories()->exists())
+				    <ul>
+					 @foreach($category->categories()->orderBy('name')->get() as $subcategory)
+						<li>
+							<a href="/category/{{ $subcategory->category_id }}" >
+								{{$subcategory->name}}
+							</a>
+						</li>
+					 @endforeach
+				    </ul>
+			         @endif
+							 @endforeach
   
 <div class="container">
 <div class="row">

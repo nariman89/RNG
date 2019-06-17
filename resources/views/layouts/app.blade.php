@@ -118,7 +118,7 @@
 					 @foreach($category->categories()->orderBy('name')->get() as $subcategory)
 						<li>
 							<a href="/category/{{ $subcategory->category_id }}" >
-								{{ $subcategory->name }}
+								{{$subcategory->name}}
 							</a>
 						</li>
 					 @endforeach

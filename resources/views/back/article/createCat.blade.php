@@ -3,14 +3,15 @@
 <div class="container mt-3">
 		<h1>Create a New Project</h1>
 		@include('partials/validation_errors')
- <form method="POST" id="add-form" action="/admin/article">
- <!-- för the massage efter adding NA-->
-  @if(session()->has('message'))
+		@if(session()->has('message'))
     <div class="alert alert-success">
         {{ session()->get('message') }}
     </div>
   @endif
 	
+ <form method="POST" id="add-form" action="/admin/article">
+ <!-- för the massage efter adding NA-->
+  
 		{!! Form::open() !!}
 		@csrf
 			<div class="form-group">
@@ -18,9 +19,7 @@
 				  <input type="text" name="name" id="name" class="form-control" placeholder="name" required value="{{old('name')}}">
 					 
       </div>
-			{{Form::select('parent_id',$categories,1,['class'=>'form-control'])}}
-				
-                               
+			{{Form::select('parent_id',$categories,8,['class'=>'form-control'])}}                 
         <button type="submit"  class="btn btn-primary">save</button>
     {!!Form::close()!!}
 			</div>

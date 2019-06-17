@@ -87,7 +87,9 @@ class ArticleController extends Controller
     public function show($id)
 
     {
-	  //
+        //kunde inte använda Model Binding
+		$article=Article::find($id);
+        return view('article/showDetail', compact('article'));
     }
 
     /**
