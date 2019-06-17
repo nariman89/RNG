@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 use Auth;
-
 use App\{
        Article,
        Category
         };
 use Illuminate\Http\Request;
-
 class ArticleController extends Controller
     {
     protected $validation_rules = [
@@ -18,13 +15,11 @@ class ArticleController extends Controller
 		'url'=> 'required|url',
 		'category_id'=> 'required',
 		'city' => 'required|min:1',
-
 	];
 	protected $validation_rules2 = [
         'name' => 'required|min:2',
 		'rent_price' => 'required|integer',
 		'url'=> 'required|url',
-
     ];
     public function __construct()
     {
@@ -43,7 +38,6 @@ class ArticleController extends Controller
         ->paginate(6);
     return view('/article/index', ['articles' => $articles]);  
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -55,7 +49,6 @@ class ArticleController extends Controller
         $categories=Category::pluck('name','category_id');
         return view('/article/adsArticle',  compact('categories'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -77,7 +70,6 @@ class ArticleController extends Controller
         $article->save();
         return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
     }
-
     /**
      * Display the specified resource.
      *
@@ -85,13 +77,11 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-
     {
         //kunde inte använda Model Binding
 		$article=Article::find($id);
         return view('article/showDetail', compact('article'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,7 +93,6 @@ class ArticleController extends Controller
         $article=Article::find($id);
         return view('article/edit', ['article'=>$article]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -124,7 +113,6 @@ class ArticleController extends Controller
     $article->save();
 	return view('article.showDetail', compact('article'));
     }
-
     /**
      * Remove the specified resource from storage.
      *

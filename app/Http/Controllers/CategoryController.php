@@ -39,7 +39,6 @@ class CategoryController extends Controller
         $category=Category::create([ 
          'name'=> request('name'),
         'parent_id'=>request('parent_id'),
-
     
 ]);
         $this->validate($request,[
@@ -98,7 +97,4 @@ class CategoryController extends Controller
         //
     }
     
-
-
 }
-

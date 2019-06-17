@@ -8,6 +8,7 @@ use App\Http\Controllers;
 use App\Category;
 
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -32,9 +33,6 @@ class AppServiceProvider extends ServiceProvider
 		view()->composer('layouts.app', function($view){
             $view->with('categories', $categories = Category::where('parent_id', 0)->orderBy('name')->get() );
             
-            
-        
-
             ///vi skrive den här istället än controller därför den categories finns i base page för att släppa skicka data varjegång show app skicka data från columns categories till variable items
         });
     
