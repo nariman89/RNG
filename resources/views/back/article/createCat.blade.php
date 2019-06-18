@@ -19,7 +19,8 @@
 				  <input type="text" name="name" id="name" class="form-control" placeholder="name" required value="{{old('name')}}">
 					 
       </div>
-			{{Form::select('parent_id',$categories,8,['class'=>'form-control'])}}                 
+			{{Form::select('parent_id',$categories,0,['class'=>'form-control'])}}  
+			@csrf               
         <button type="submit"  class="btn btn-primary">save</button>
     {!!Form::close()!!}
 			</div>

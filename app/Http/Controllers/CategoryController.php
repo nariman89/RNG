@@ -12,11 +12,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   public function index()
     {
+        //
         $categories = Category::where('parent_id', 0)->orderBy('name')->get();
-        return view('admin/article', ['categories' => $categories]);
+        return view('layouts/app', ['categories' => $categories]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories=Category::pluck('name','category_id');
+              $categories=Category::pluck('name','category_id');
         return view('/back/article/createCat',  compact('categories'));
     }
     /**
@@ -84,8 +86,7 @@ class CategoryController extends Controller
     $category->parent_id = $validData['parent_id'];
     
     $category->save();
-	return view('.index', compact('category'));
-    }
+    return view('/index', ['categories' => $categories]);    }
     /**
      * Remove the specified resource from storage.
      *

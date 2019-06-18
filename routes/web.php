@@ -16,17 +16,15 @@ Route::get('/article/index', 'ArticleController@index');
 Route::middleware(['auth'])->group(function() {
 Route::get('/article/adsArticle', 'ArticleController@create');
 });
-Route::post('/article/adsArticle', 'ArticleController@store');
 Route::get('/article/{id}', 'ArticleController@edit');
 Route::post('/article/{article}', 'ArticleController@update');
-Route::post('/category/{category}', 'CategoryController@update');
-Route::get('showDetail/{id}','ArticleController@show');
-Route::get('/projects/myarticles', 'PageController@show');
-Route::resource('/bookings/bookfinish', 'BookingController');
+Route::post('/article/adsArticle', 'ArticleController@store');
 Route::get('/category/{id}', 'PageController@adsByCategory');
+ Route::get('showDetail/{id}','ArticleController@adsDetails');
+Route::get('/projects/myarticles', 'PageController@show');
+Route::resource('/article', 'ArticleController');
+Route::resource('/bookings/bookfinish', 'BookingController');
 Route::get('admin/article ', 'PageController@admin')->middleware('Isadmin');
-Route::get('/back/article/createCat', 'CategoryController@index');
+Route::get('layouts/app/', 'CategoryController@index');
 Route::get('/back/article/createCat', 'CategoryController@create');
 Route::post('/admin/article', 'CategoryController@store');
-Route::resource('/back', 'CategoryController');
-

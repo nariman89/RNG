@@ -17,8 +17,9 @@ class PageController extends Controller
     }
     public function admin()
     {
+        $categories = Category::all();
 	 $articles=Article::paginate(9);
-        return view('back/article/index', compact('articles', 'categories'));
+    return view('back/article/index', compact('articles', 'categories'));
     }
     
     
