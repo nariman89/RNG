@@ -1,7 +1,6 @@
 @extends('layouts/app')
 @section('content')
 @include('partials/validation_errors')
-
 @csrf
 @method('PATCH')
 
@@ -40,12 +39,12 @@ use Carbon\Carbon;
     <div>
     
 
-<a href="/article/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
-  <form method="POST" action="/article/{{$article->article_id}}">
-		
-		@method('DELETE')
-			<input type="submit" value="Delete article" class="btn btn-danger">
-	</form>
+  <a href="/article/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
+    <form method="POST" action="/article/{{$article->article_id}}">
+        @csrf
+        @method('DELETE')
+          <input type="submit" value="Delete article" class="btn btn-danger">
+    </form>
   </div>
     @endif
     @endif

@@ -41,63 +41,30 @@
     </form>
   </div>
 </nav>
-<div class="btn-group md-100px;">
-
-<div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-files-o fa-fw"></i>
-    Category<span class="caret"></span></button>
-    <ul class="dropdown-menu" role="menu">
-      <li><a href="/back/article/createCat">ADD a new Category</a></li>
-      <li><a href="#">Show Category</a></li>
-    </ul>
-  </div>  <div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-files-o fa-fw"></i> Articles<span class="caret"></span><span class="fa arrow" class="caret pt-20px"></span></li></button>
-    <ul class="dropdown-menu" role="menu">
-      <li><a href="/article/create">ADD a new Article</a></li>
-      <li><a href="#">Show Article</a></li>
-    </ul>
-  </div>
-  <button type="button" class="btn btn-primary">All</button>
+<div class="container">
+   <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-files-o fa-fw"></i>
+        Category<span class="caret"></span></button>
+           <ul class="dropdown-menu" role="menu">
+              <li><a href="/back/article/createCat">ADD a new Category</a></li>
+              <li><a href="#">Show Category</a></li>
+          </ul>
+    </div>  
+    <div class="btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fa fa-files-o fa-fw"></i> Articles<span class="caret"></span><span class="fa arrow" class="caret pt-20px"></span></li></button>
+          <ul class="dropdown-menu" role="menu">
+             <li><a href="/article/create">ADD a new Article</a></li>
+             <li><a href="#">Show Article</a></li>
+          </ul>
+    </div>
+      <button type="button" class="btn btn-primary">All</button>
 </div>
-
+  </div>
   </div>
 </nav>
 @yield('content')
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
+            
         </nav>
-
-	<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">statistics</h1>
-				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-			
-							
-							
-				<div class="col-lg-6 col-md-6">
-					<div class="panel panel-yellow">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-4">
-									<i class="fa fa-shopping-cart fa-5x"></i>
-								</div>
-								<div class="col-xs-8 text-right">
-									<div class="huge">124</div>
-									<div>New Orders!</div>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
 			</div>
 			<!-- /.row -->
 		</div>
