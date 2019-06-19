@@ -14,7 +14,6 @@ class CategoryController extends Controller
      */
    public function index()
     {
-        //
         $categories = Category::where('parent_id', 0)->orderBy('name')->get();
         return view('layouts/app', ['categories' => $categories]);
     }
@@ -26,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-              $categories=Category::pluck('name','category_id');
+        $categories=Category::pluck('name','category_id')->prepend(['none'], '');
         return view('/back/article/createCat',  compact('categories'));
     }
     /**
@@ -50,7 +49,9 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         $category->save();
-        return redirect()->back()->with (compact('category'));
+        // return redirect('/back/article/'.$category->parent_id);
+         return redirect('/admin/article');
+
     }
     /**
      * Display the specified resource.
@@ -60,7 +61,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return('/back/article/');
     }
     /**
      * Show the form for editing the specified resource.

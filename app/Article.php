@@ -13,19 +13,26 @@ class Article extends Model
 {
 
   protected $primaryKey = 'article_id';
+  /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
 
-	 protected $fillable=['name', 'descraption', 'rent_price','category_id', 'city', 'user_id', 'url'];
+     */
 
-public function category() {
+    protected $fillable = [
+    'name', 'descraption', 'rent_price','category_id', 'city', 'user_id', 'url'];
+
+   public function category() {
     	return $this->belongsTo(Category::class);
     }
 
-public function user(){
-   return $this->belongsTo(User::class);
-}
-public function booking(){
-   return $this->belongsTo(Booking::class);
-}
+   public function user(){
+      return $this->belongsTo(User::class);
+   }
+   public function booking(){
+      return $this->belongsTo(Booking::class);
+   }
 
 }
 

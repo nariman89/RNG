@@ -111,7 +111,7 @@
 			<div class="col-2">
 				<h1 class="my-4">Category</h1>
 			   <div class="list-group ">
-                <?php $categories=App\Category::all(); ?>
+                <?php $categories = App\Category::where('parent_id', 0)->orderBy('name')->get(); ?>
 				@foreach($categories as $category)
 			      <a href="/category/{{$category->category_id}}" >{{$category->name}}</a>
 				  @if($category->categories()->exists())
@@ -125,7 +125,6 @@
 					 @endforeach
 				    </ul>
 			         @endif
-
 			@endforeach
 		{{-- jag läggt den bara för att visa gruppen var måste finnas category --}}
 			<a href="" >Dator</a>

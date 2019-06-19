@@ -55,7 +55,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Article $article,Request $request)
     {
         ///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
         $article=Article::create($request->all()+ ['user_id'=>$request->user()->user_id]);

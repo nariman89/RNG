@@ -25,6 +25,6 @@ Route::get('/projects/myarticles', 'PageController@show');
 Route::resource('/article', 'ArticleController');
 Route::resource('/bookings/bookfinish', 'BookingController');
 Route::get('admin/article ', 'PageController@admin')->middleware('Isadmin');
-Route::get('layouts/app/', 'CategoryController@index');
+Route::view('layouts/app/', 'CategoryController@index');
 Route::get('/back/article/createCat', 'CategoryController@create');
 Route::post('/admin/article', 'CategoryController@store');
