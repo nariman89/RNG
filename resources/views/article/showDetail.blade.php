@@ -32,19 +32,18 @@ use Carbon\Carbon;
     	    <h2 class="text-info">Description:</h2>
 		      <h2 class="card-text">{{$article->description}}</h2>
 		</div>
-		<button  onclick="myFunction()"> Book</button>
-	<br>
-    @if (Auth::check())
-	  @if ($article->user_id == Auth::user()->user_id)
-    <div>
-    
-
-  <a href="/article/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
-    <form method="POST" action="/article/{{$article->article_id}}">
+    <div class="d-flex">
+		  <button class="btn btn-success" onclick="myFunction()"> Book</button>
+	    <br>
+        @if (Auth::check())
+	      @if ($article->user_id == Auth::user()->user_id)
+      <a href="/article/{{$article->article_id}}/edit" class="btn btn-warning">Edit Article</a>
+      <form method="POST" action="/article/{{$article->article_id}}">
         @csrf
         @method('DELETE')
           <input type="submit" value="Delete article" class="btn btn-danger">
-    </form>
+      </form>
+  </div>
   </div>
     @endif
     @endif
