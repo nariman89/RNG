@@ -1,13 +1,16 @@
 @extends('layouts/app')
 @section('content')
 @include('partials/validation_errors')
-@method('POST')
+
+@csrf
+@method('PATCH')
+
 @php
 use Carbon\Carbon;
 @endphp
   <link href="{{ asset('css/showDetail.css') }}" rel="stylesheet">
-  <div class="container text-left mt-20">
-	  <h3 class="card-title"> {{$article->name}}</h3><hr>
+     <div class="container text-left mt-20">
+	     <h3 class="card-title"> {{$article->name}}</h3><hr>
    @if(session()->has('message'))
       <div class="alert alert-success">
          {{ session()->get('message') }}
@@ -35,9 +38,11 @@ use Carbon\Carbon;
     @if (Auth::check())
 	  @if ($article->user_id == Auth::user()->user_id)
     <div>
-<a href="/article/{{$article->article_id}}" class="btn btn-warning" style="width:100%">Edit Article</a>
+    
+
+<a href="/article/{{$article->article_id}}/edit" class="btn btn-warning" style="width:100%">Edit Article</a>
   <form method="POST" action="/article/{{$article->article_id}}">
-		@csrf
+		
 		@method('DELETE')
 			<input type="submit" value="Delete article" class="btn btn-danger">
 	</form>
@@ -47,7 +52,7 @@ use Carbon\Carbon;
 		<div id="myDIV">
 			<div class="container mt-3">
 		<h1>Book The Article</h1>
-			 {{csrf_field() }}
+			
   <form method="POST" id="add-form" action="/bookings/bookfinish">
         {!! Form::open(array('files'=>true)) !!}
       <div class="form-row">

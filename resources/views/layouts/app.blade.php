@@ -35,14 +35,14 @@
                     <ul class="navbar-nav mr-auto">
 						@auth
 							<li class="nav-item">
-								<a class="nav-link" href="/article/index">Articles</a>
+								<a class="nav-link" href="/article">Articles</a>
 							</li>
 						@endauth
                     </ul>
                      <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="/article/adsArticle">Add a new Article</a>
+                                <a class="nav-link" href="/article/create">Add a new Article</a>
 							</li>
 							 @endauth
 					</ul>
@@ -111,7 +111,7 @@
 			<div class="col-2">
 				<h1 class="my-4">Category</h1>
 			   <div class="list-group ">
-                <?php $categories = App\Category::where('parent_id', 0)->orderBy('name')->get(); ?>
+                <?php $categories = App\Category::where('parent_id', 0)->orderBy('name')->get()->take(10); ?>
 				@foreach($categories as $category)
 			      <a href="/category/{{$category->category_id}}" >{{$category->name}}</a>
 				  @if($category->categories()->exists())

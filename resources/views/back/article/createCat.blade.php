@@ -19,12 +19,9 @@
 				  <input type="text" name="name" id="name" class="form-control" placeholder="name" required value="{{old('name')}}">
 					 
       </div>
-	
-			
 			{{Form::select('parent_id',$categories, null,  ['class'=>'form-control'])}}  
-				
         <button type="submit"  class="btn btn-primary">save</button>
-    {!!Form::close()!!}
+      {!!Form::close()!!}
 			</div>
 		
 </div>

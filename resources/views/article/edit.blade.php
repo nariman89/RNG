@@ -1,14 +1,19 @@
 @extends('layouts/app')
 @section('content')
+
 @php
 use App\Article;
 $articles = Article::where('article_id', auth()->id())->get();
 @endphp
 
+
+
 	<div class="container mt-3">
+	
 		<h1>Edit Article: {{$article->name}}</h1>
 		<form method="POST" action="/article/{{$article->article_id}}">
-		@csrf
+	@csrf
+	@method('PATCH')
 	<div class="form-group">
 		<label for="name">Article Name</label>
 		<input type="text" name="name" id="name" class="form-control" placeholder="Article Name" value="{{$article->name}}">
@@ -37,7 +42,7 @@ $articles = Article::where('article_id', auth()->id())->get();
 	</div>
 
 	<div class="form-group">
-		<input type="hidden" name="user_id" id="user_id" class="form-control" placeholder="User_id">
+		<input type="hidden" name="user_id" id="user_id" class="form-control" placeholder="User_id" value="{{$article->user_id}}">
 	</div>
 
 	<input type="submit" value="Update Article" class="btn btn-primary">

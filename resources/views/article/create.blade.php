@@ -2,7 +2,8 @@
 @section('content')
 @include('partials/validation_errors')
     <link href="{{ asset('css/adsArticle.css') }}" rel="stylesheet">
-    <form method="POST" id="add-form" action="/article/adsArticle">
+    <form method="POST" id="add-form" action="/article">
+     @csrf
  <!-- för the massage efter adding NA-->
   @if(session()->has('message'))
     <div class="alert alert-success">

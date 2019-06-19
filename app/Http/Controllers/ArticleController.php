@@ -8,6 +8,9 @@ use App\{
 use Illuminate\Http\Request;
 class ArticleController extends Controller
     {
+/**
+ * Validation Rules
+ */
     protected $validation_rules = [
         'name' => 'required|min:2',
 		'description' => 'required|min:2',
@@ -33,10 +36,10 @@ class ArticleController extends Controller
     public function index()
     {
        
-    $articles=Article::select('article_id','name', 'rent_price', 'url' )
-        ->latest()
-        ->paginate(6);
-    return view('/article/index', ['articles' => $articles]);  
+       $articles=Article::select('article_id','name', 'rent_price', 'url' )
+                     ->latest()
+                     ->paginate(6);
+    return view('article/index', ['articles' => $articles]);  
     }
     /**
      * Show the form for creating a new resource.
@@ -45,9 +48,12 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        if (Auth::guest()) {
+            abort(403);
+        }
         ////för att sätta dem i dropDown i form NA
         $categories=Category::pluck('name','category_id');
-        return view('/article/adsArticle',  compact('categories'));
+        return view('article/create', ['categories' => $categories]);
     }
     /**
      * Store a newly created resource in storage.
@@ -55,7 +61,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Article $article,Request $request)
+    public function store(Article $article, Request $request)
     {
         ///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
         $article=Article::create($request->all()+ ['user_id'=>$request->user()->user_id]);
@@ -68,40 +74,38 @@ class ArticleController extends Controller
         $article->category_id=$validData['category_id'];
         $article->city=$validData['city'];
         $article->save();
-        return redirect()->back()->with('message', 'Your article has been added💃💃💃💃!');
+        return redirect('/article/'.$article->article_id)->with('message', 'Your article has been added💃💃💃💃!');
     }
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //kunde inte använda Model Binding
-		$article=Article::find($id);
-        return view('article/showDetail', compact('article'));
+        return view('article/showDetail', ['article' => $article]);
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        $article=Article::find($id);
         return view('article/edit', ['article'=>$article]);
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Article $article
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Article $article)
     {
+    $article=Article::create($request->all()+['user_id'=>$request->user()->user_id]);
     $validData = $request->validate($this->validation_rules2);
     $article->user_id = Auth::user()->user_id;
     $article->name = $validData['name'];
@@ -111,23 +115,18 @@ class ArticleController extends Controller
     $article->description = $request->description;
     $article->category_id = $request->category_id;
     $article->save();
-	return view('article.showDetail', compact('article'));
+	 return redirect('article')->with('message', 'Your article has been added💃💃💃💃!');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
         $article->delete();
 		return redirect('/article')->with('message', 'Article successfully deleted 😅!');
     }
-    public function adsDetails($id)
-    {
-        //kunde inte använda Model Binding
-		$article=Article::find($id);
-        return view('article/showDetail', compact('article'));
-    }
+   
 }

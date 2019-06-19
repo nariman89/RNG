@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     { 
         //only admin can create a new Category
-        $category=Category::create([ 
+        $category=new Category([ 
          'name'=> request('name'),
         'parent_id'=>request('parent_id'),
     

@@ -11,7 +11,7 @@ $articles = Article::where('user_id', auth()->id())->get();
 	    <h1>My Articles</h1>
 	      <ol>
 		    @foreach($articles as $article)
-		      <li><a href="/showDetail/{{$article->article_id}}">{{$article->name}}</a></li>
+		      <li><a href="/article/{{$article->article_id}}">{{$article->name}}</a></li>
 		    @endforeach
 	      </ol>
     </div>
