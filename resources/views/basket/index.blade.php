@@ -9,10 +9,12 @@
 
                 <div class="panel-body">
                 	<ul>
-                		@foreach ($basket->items as $item ?? "You have nothing")
-                			<li>{{ $item->quantity ?? "no" }}none; 
-                            
-						@endforeach
+                     <li>
+                         @foreach($items as $item)
+                             {{$item->quantity}} pc of
+                             {{$item->article->name ?? "You Have No Thing"}} 
+                        @endforeach
+                     </li>
                     </ul>
                 </div>
             </div>
