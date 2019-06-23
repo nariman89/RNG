@@ -30,9 +30,12 @@
 		     </h5>
 			   <h6>{{ $article->rent_price }} kr</h6>
 			<button><a href="/article/{{$article->article_id}}">Read More</a></button> 
+			  <p class="btn-holder"><a style="margin-top:10px;" href="{{ url('basket/'.$article->id) }}" class="btn btn-warning btn-block text-center" role="button" onClick="fun()">Add to cart</a> </p>
 		  </div>
 		 </div>
 	@endforeach
+	                          
+
 	 {{-- för paginate --}}
 	 
 	 {{$articles->links()}}
@@ -40,6 +43,14 @@
 {!!Form::close()!!}
 
 @endsection
+@section('scripts')
 
+var article=[];
+
+$('#counter').click(function() {
+    $('.count').html(function(i, val) { return val*1+1 });
+    Materialize.toast('You have clicked me!', 2000)
+});
+@endsection
 
 

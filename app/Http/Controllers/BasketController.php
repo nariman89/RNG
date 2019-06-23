@@ -7,6 +7,7 @@ use App\Basket;
 use App\BasketItem;
 
 
+
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -15,6 +16,10 @@ class BasketController extends Controller
      
        $items=BasketItem::all();   
     	return view('basket.index', ['items' => $items]);
+    }
+    public function basket()
+    {
+        return view('basket.index');
     }
 
 }
