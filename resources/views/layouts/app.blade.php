@@ -53,6 +53,13 @@
                             </li>
                         @endauth
 					</ul>
+                    <ul class="navbar-nav mr-auto">
+                     @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="/basket">My basket</a>
+                            </li>
+                    </ul>
+                        @endauth
 					<ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">

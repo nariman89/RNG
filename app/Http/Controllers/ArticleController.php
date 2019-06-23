@@ -106,9 +106,9 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-    $article=Article::create($request->all()+['user_id'=>$request->user()->user_id]);
+   
     $validData = $request->validate($this->validation_rules2);
-    $article->user_id = Auth::user()->user_id;
+    $article->user_id = Auth::user()->id;
     $article->name = $validData['name'];
     $article->url = $validData['url'];
     $article->rent_price = $validData['rent_price'];

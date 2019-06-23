@@ -12,7 +12,6 @@ use App\Http\Requests\ArticleRequest;
 class Article extends Model
 {
 
-  protected $primaryKey = 'article_id';
   /**
      * The attributes that are mass assignable.
      *

@@ -21,3 +21,4 @@ Route::get('admin/article ', 'PageController@admin')->middleware('Isadmin');
 Route::view('layouts/app/', 'CategoryController@index');
 Route::get('/back/article/createCat', 'CategoryController@create');
 Route::post('/admin/article', 'CategoryController@store');
+Route::get('/basket', 'BasketController@index');

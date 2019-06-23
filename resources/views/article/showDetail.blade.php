@@ -36,7 +36,7 @@ use Carbon\Carbon;
 		  <button class="btn btn-success" onclick="myFunction()"> Book</button>
 	    <br>
         @if (Auth::check())
-	      @if ($article->user_id == Auth::user()->user_id)
+	      @if ($article->user_id == Auth::user()->id)
       <a href="/article/{{$article->article_id}}/edit" class="btn btn-warning">Edit Article</a>
       <form method="POST" action="/article/{{$article->article_id}}">
         @csrf
