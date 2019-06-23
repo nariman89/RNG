@@ -3,7 +3,8 @@ namespace App\Http\Controllers;
 use Auth;
 use App\{
        Article,
-       Category
+       Category,
+       User
         };
 use Illuminate\Http\Request;
 class ArticleController extends Controller
@@ -36,7 +37,7 @@ class ArticleController extends Controller
     public function index()
     {
        
-       $articles=Article::select('article_id','name', 'rent_price', 'url' )
+       $articles=Article::select('id','name', 'rent_price', 'url' )
                      ->latest()
                      ->paginate(6);
     return view('article/index', ['articles' => $articles]);  
@@ -52,7 +53,7 @@ class ArticleController extends Controller
             abort(403);
         }
         ////för att sätta dem i dropDown i form NA
-        $categories=Category::pluck('name','category_id');
+        $categories=Category::pluck('name','id');
         return view('article/create', ['categories' => $categories]);
     }
     /**
@@ -64,9 +65,9 @@ class ArticleController extends Controller
     public function store(Article $article, Request $request)
     {
         ///det sparat innan två ggr därför jag skrev by fel =new två ggr NA
-        $article=Article::create($request->all()+ ['user_id'=>$request->user()->user_id]);
+        
         $validData = $request->validate($this->validation_rules);
-        $article->user_id = Auth::user()->user_id;
+        $article->user_id = Auth::user()->id;
         $article->name = $validData['name'];
         $article->description = $validData['description'];
         $article->rent_price= $validData['rent_price'];

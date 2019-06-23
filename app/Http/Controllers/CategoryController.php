@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories=Category::pluck('name','category_id')->prepend(['none'], '');
+        $categories=Category::pluck('name','id')->prepend(['none'], '');
         return view('/back/article/createCat',  compact('categories'));
     }
     /**
@@ -82,7 +82,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $category->user_id = Auth::user()->user_id;
+    $category->user_id = Auth::user()->id;
     $category->name = $validData['name'];
     $category->parent_id = $validData['parent_id'];
     
