@@ -9,11 +9,15 @@
 
                 <div class="panel-body">
                 	<ul>
-                     <li>
-                         @foreach($items as $item)
+                     <li> 
+                     @if ($basket = App\Basket::where('user_id', auth()->id())->get())
+                        @foreach($basket[0]->items as $item)
                              {{$item->quantity}} pc of
                              {{$item->article->name ?? "You Have No Thing"}} 
                         @endforeach
+                    @else
+                        <p> "You Have No Thing" </p>
+                    @endif
                      </li>
                     </ul>
                 </div>
