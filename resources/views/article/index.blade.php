@@ -47,14 +47,3 @@
 {!!Form::close()!!}
 
 @endsection
-	<?php $total = 0 ;
-                                $basket = App\Basket::where('user_id', auth()->id())->get();  
-                       foreach($basket[0]->items as $item)?>
-<script>
-
-	function myFunction(){
-	
- document.getElementById("demo").innerHTML=$item['quantity']++; 
-		 }
-		 </script>
-

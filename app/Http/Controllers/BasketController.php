@@ -21,5 +21,5 @@ class BasketController extends Controller
     {
         return view('basket.index');
     }
-
+    
 }
