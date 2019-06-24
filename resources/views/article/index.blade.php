@@ -30,10 +30,14 @@
 		     </h5>
 			   <h6>{{ $article->rent_price }} kr</h6>
 			<button><a href="/article/{{$article->article_id}}">Read More</a></button> 
-			  <p class="btn-holder"><a style="margin-top:10px;" href="{{ url('basket/'.$article->id) }}" class="btn btn-warning btn-block text-center" role="button" onClick="fun()">Add to cart</a> </p>
+			@endforeach
+			
+			  <p class="btn-holder"><a style="margin-top:10px;" href="{{ url('basket/') }}" class="btn btn-warning btn-block text-center" role="button" id="demo" onClick="myFunction()">Add to cart</a> </p>
 		  </div>
 		 </div>
-	@endforeach
+		 
+		 
+	
 	                          
 
 	 {{-- för paginate --}}
@@ -43,14 +47,14 @@
 {!!Form::close()!!}
 
 @endsection
-@section('scripts')
+	<?php $total = 0 ;
+                                $basket = App\Basket::where('user_id', auth()->id())->get();  
+                       foreach($basket[0]->items as $item)?>
+<script>
 
-var article=[];
-
-$('#counter').click(function() {
-    $('.count').html(function(i, val) { return val*1+1 });
-    Materialize.toast('You have clicked me!', 2000)
-});
-@endsection
-
+	function myFunction(){
+	
+ document.getElementById("demo").innerHTML=$item['quantity']++; 
+		 }
+		 </script>
 

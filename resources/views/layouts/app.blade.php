@@ -58,8 +58,9 @@
                      @auth 
                              <div class="row">
                               <?php $total = 0 ;
-                                $basket = App\Basket::where('user_id', auth()->id())->get(); ?>
+                                $basket = App\Basket::where('user_id', auth()->id())->get();  ?>
                         @foreach($basket[0]->items as $item)
+                       
         <div class="col-lg-12 col-sm-12 col-12 main-section">
             <div class="dropdown">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">
@@ -72,7 +73,6 @@
                         </div>
                                 
                              {{$item->quantity}} pc of
-                             
                              {{$item->article->name ?? "You Have No Thing"}} 
                             <?php $total += ($item->article->rent_price) * ($item->quantity) ?>
                         @endforeach
@@ -83,12 +83,11 @@
                     </div>
  
                     @if(session('basket'))
-                        @foreach(session('basket') as $id => $details)
+                        @foreach($basket[0]->items as $item)
                             <div class="row cart-detail">
-                               
                                 <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                    <p>{{ $details['name'] }}</p>
-                                    <span class="price text-info"> ${{ $details['rent_price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                    <p>{{$item->article->name}}</p>
+                                    <span class="price text-info"> ${{ $item->article->rent_price}}</span> <span class="count"> Quantity:{{$item->quantity }}</span>
                                 </div>
                             </div>
                         @endforeach
