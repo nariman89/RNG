@@ -1,13 +1,14 @@
 
-
-
 <ul class="navbar-nav mr-auto">
                      @auth 
+                    
+
                              <div class="row">
                               <?php $total = 0 ;
                                 $basket = App\Basket::where('user_id', auth()->id())->get();  ?>
+                                @if(session('basket'))
                         @foreach($basket[0]->items as $item)
-                       
+                      
         <div class="col-lg-12 col-sm-12 col-12 main-section">
             <div class="dropdown">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">
@@ -48,5 +49,12 @@
                 </div>
    
                     </ul>
+                    @endif
+        </ul>
+        <li class="nav-item">
+           <a class="fa fa-shopping-cart" >Basket item {{ $total }}</a>
+        </li>
+       
 @endauth
+
 

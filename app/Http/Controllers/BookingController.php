@@ -66,9 +66,6 @@ class BookingController extends Controller
 	        return redirect('/bookings/bookfinish/' . $booking->id)->with('message', 'Thank you for your booking😎😎😎😎😎!
 		Welcome back 😍');;
 
-		// return redirect()->back()->with('message', 'Thank you for your booking😎😎😎😎😎!
-		// Welcome back 😍');
-
     }
 
     /**

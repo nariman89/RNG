@@ -53,8 +53,11 @@
                                 <a class="nav-link" href="/bookings/bookfinish/{$article->article_id}}">My booking</a>
                             </li>
                         @endauth
+                        
 					</ul>
-                    @include('layouts/basket')
+                     <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">  @include('layouts/basket')</li>  </ul>
+                   
                     
                         
 					<ul class="navbar-nav mr-auto">

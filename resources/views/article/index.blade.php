@@ -4,7 +4,6 @@
     <div class="alert alert-success">
         {{session()->get('message')}}
     </div>
-
   @endif	
 	
 	<div class="container text-left">
@@ -33,35 +32,21 @@
 			  <a href="/article/{{$article->id}}">Read More</a>
 			</button> 
 			@endforeach
-		
-<?php $baskets=App\Basket::all();
-foreach($baskets as $basket)?>
-			 <form method="POST" id="add-form" action="/basket/{{$basket->id}}">
-			 @csrf
-	@method('PUT')
-    {!! Form::open(array('files'=>true)) !!}
-		@if ($basket = App\Basket::where('user_id', auth()->id())->get())
-                        @foreach($basket[0]->items as $item)
-												<!-- <?php // dd($item); ?> -->
-			<div class="form-group">
-				<input type="hidden" name="user_id" id="user_id" class="form-control" placeholder="user_id">
-	    </div>
-			<div class="form-group">
-				<input type="hidden" name="basket_id" id="basket_id" class="form-control" placeholder="basket_id" value="{{$item->basket_id}}">
-	    </div>
+		 
 
-			<div class="form-group">
-				<input type="hidden" name="article_id" id="article_id" class="form-control" placeholder="article_id" value="{{$item->article_id}}">
-	    </div>
-			<div class="form-group">
-				<input   name="quantity"  class="form-control" placeholder="quantity" value="{{$item->quantity}}">
-	    </div>
-			<a style="margin-top:10px;"  href=" basket/{{$basket[0]->id}}"      class="btn btn-warning btn-block text-center" type="submit" id="hm" role="button"  >Add to Basket</a>
-			@endforeach
-                    @else
-                        <p> "You Have No Thing" </p>
-                    @endif
-      {!!Form::close()!!}
+		 <?php $baskets = App\Basket::all();  ?>
+						
+							
+		<form method="POST" action="/basket">
+		@csrf
+		 
+		 
+	 
+			<input style="margin-top:10px;" class="btn btn-warning btn-block text-center" type="submit" role="button"  value="Add to Basket" >
+		
+			   
+			</form>
+	   	   
 		
     <a href="/ ">&laquo; Back to all Articles</a>
 			

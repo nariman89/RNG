@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 
 class BasketController extends Controller
 {
-    protected $validation_rules = [
-        'basket_id' => 'required|min1',
-        'article_id'=> 'required',
-        'quantity'=> 'required'
-	];
+    
     /**
      * Display a listing of the resource.
      *
@@ -33,8 +29,8 @@ class BasketController extends Controller
      */
     public function create()
     {
-        //
-    }
+    return view('basket.index', ['baskets' => $baskets]);
+       }
 
     /**
      * Store a newly created resource in storage.
@@ -42,21 +38,34 @@ class BasketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $request, Basket $basket)
+    {         $basket = Basket::all()->get('basket');
+
+      if($basket){   
+          
+ $basket = Basket::where('user_id', auth()->id())->get();         
+    	return redirect('/basket/'.$basket[0]->id);}
+      if(!$basket){
+          
+                
+
+        $basket = new Basket();
+         $basket->user_id = Auth::user()->id;
+        $basket->save();  
+    	return redirect('/basket/'.$basket->id);}
+      
+        }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $item 
      * @return \Illuminate\Http\Response
      */
-    public function show(BasketItem $item)
+    public function show( BasketItem $item )
     {
         return view('basket.index', ['item' => $item]);
-    }
+       }
 
     /**
      * Show the form for editing the specified resource.
@@ -64,9 +73,9 @@ class BasketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Basket $basket)
     {
-        return view('/basket.index');
+        return view('/basket.index', ['basket' => $basket]);
     }
 
     /**
@@ -76,10 +85,10 @@ class BasketController extends Controller
      * @param  int  BasketItem $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BasketItem $item )
+    public function update(Request $request, Basket $basket )
     {   
-       $item->quantity=$request->quantity+1;
-       $item->save();
+       
+       $changed->save();
        return view('/basket/index');
     }
 

@@ -1,7 +1,13 @@
 @extends('layouts/app')
 
 @section('content')
-
+    <link href="{{ asset('css/basket.css') }}" rel="stylesheet">
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+  @endif
+  
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -61,6 +67,6 @@
         </div>
     </div>
 </div>
-
+@
 @endsection
 
