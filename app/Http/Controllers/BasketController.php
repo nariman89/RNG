@@ -39,21 +39,21 @@ class BasketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Basket $basket)
-    {         $basket = Basket::all()->get('basket');
-
-      if($basket){   
-          
- $basket = Basket::where('user_id', auth()->id())->get();         
-    	return redirect('/basket/'.$basket[0]->id);}
-      if(!$basket){
-          
-                
-
-        $basket = new Basket();
-         $basket->user_id = Auth::user()->id;
-        $basket->save();  
-    	return redirect('/basket/'.$basket->id);}
-      
+    {         
+        $basket = Basket::all()->get('basket');
+        $basket = Basket::where('user_id', auth()->id())->get();
+           if($basket)
+{       
+             
+              return redirect('/basket/'.$basket[0]->id);
+            }
+          if(!$basket){
+              $basket = new Basket();
+              $basket->user_id = Auth::user()->id;
+              $basket->save();  
+             return redirect('/basket/'.$basket->id)->with('message', 'Your basket has been added💃💃💃💃!');
+            }
+            
         }
 
     /**
@@ -62,9 +62,29 @@ class BasketController extends Controller
      * @param  int  $item 
      * @return \Illuminate\Http\Response
      */
-    public function show( BasketItem $item )
+    public function show( BasketItem $item, Basket $basket )
     {
-        return view('basket.index', ['item' => $item]);
+        if($item) {
+        
+        $item=BasketItem::all()->map(function ($item, $key) {
+        
+        $item['quantity'] += 1;
+        $item->save();
+        return $item;
+});
+     return view('basket.index')->with($item->all());
+     
+         if(!$item) {
+        $item=BasketItem::all()->map(function ($item, $key) {
+           $item= new BasketItem(); 
+        $item['quantity'] += 1;
+        $item->save();
+        return $item;
+           });
+            return view('basket.index')->with($item->all());
+        
+    }}
+       
        }
 
     /**
