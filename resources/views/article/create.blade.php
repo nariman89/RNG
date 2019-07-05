@@ -21,7 +21,9 @@
 				<label for="rent_price">Article Price</label>
 				<input type="text" name="rent_price" id="rent_price" class="form-control" placeholder="Article rent_price" required value="{{ old('rent_price') }}">
       </div>
-
+      <div class="form-group">
+				<input type="hidden" name="user_id" id="user_id" class="form-control" placeholder="User_id">
+	    </div>
       <div class="form-group">
 				<label for="description">Article Description</label>
 				<input type="text" name="description" id="description" class="form-control" placeholder="Article description" required value="{{ old('description') }}">

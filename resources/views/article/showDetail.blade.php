@@ -111,7 +111,7 @@ use Carbon\Carbon;
 		<input style="margin:20px" type="submit" value="save" class="btn btn-primary">
 		{!!Form::close()!!}
     <br>
-		<a href="/article/index">&laquo; Back to all articles</a>
+		<a href="/article">&laquo; Back to all articles</a>
 @endsection
 
 <script>
