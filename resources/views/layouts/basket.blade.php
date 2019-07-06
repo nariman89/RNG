@@ -15,13 +15,13 @@
                 <div class="dropdown-menu">
                     <div class="row total-header-section">
                         <div class="col-lg-8 col-sm-8 col-8">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <?php $item=App\BasketItem::take('1'); ?>
                          @foreach($basket[0]->items as $item)
                          
                          <ul><li>
                              {{$item->quantity}} pc of
                              {{$item->article->name ?? "You Have No Thing"}} </li></ul>
-                            <?php $total += ($item->article->rent_price) * ($item->quantity) ?>
+                            <?php $total += ($item->article->rent_price) * ($item->quantity) ?>@endforeach
                              <div class="row">
                         <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
                         <p>{{$total}}Kr</p></div></div></div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 </ul> 
-          @endforeach          
+                    
        
 @endauth
 
