@@ -35,7 +35,7 @@
 					
 		<form method="POST" action="/basket">
 		@csrf
-				<input  name="article_id" id="article_id" class="form-control" placeholder="article_id" required value="{{$article->id}}">
+				<input type="hidden" name="article_id" id="article_id" class="form-control" placeholder="article_id" required value="{{$article->id}}">
 	    
 	    
 			<input style="margin-top:10px;" class="btn btn-warning btn-block text-center" type="submit" role="button"  value="Add to Basket" >
