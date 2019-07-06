@@ -121,7 +121,7 @@
 			   <div class="list-group ">
                 <?php $categories = App\Category::where('parent_id', 0)->orderBy('name')->get()->take(10); ?>
 				@foreach($categories as $category)
-			      <a href="/category/{{$category->category_id}}" >{{$category->name}}</a>
+			      <a href="/category/{{$category->id}}" >{{$category->name}}</a>
 				  @if($category->categories()->exists())
 				    <ul>
 					 @foreach($category->categories()->orderBy('name')->get() as $subcategory)

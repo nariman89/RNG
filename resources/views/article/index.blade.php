@@ -31,27 +31,23 @@
 			<button>
 			  <a href="/article/{{$article->id}}">Read More</a>
 			</button> 
-			@endforeach
-		 
-
-		 <?php $baskets = App\Basket::all();  ?>
-						
-							
+			
+					
 		<form method="POST" action="/basket">
 		@csrf
-		 
-		 
-	 
+				<input  name="article_id" id="article_id" class="form-control" placeholder="article_id" required value="{{$article->id}}">
+	    
+	    
 			<input style="margin-top:10px;" class="btn btn-warning btn-block text-center" type="submit" role="button"  value="Add to Basket" >
 		
 			   
 			</form>
-	   	   
+	   	   </div> </div>@endforeach
 		
     <a href="/ ">&laquo; Back to all Articles</a>
 			
 			  
-		  </div>
+		 
 		 </div>
 	 {{-- för paginate --}}
 	 

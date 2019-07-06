@@ -42,9 +42,31 @@ class BasketController extends Controller
     {         
         $basket = Basket::all()->get('basket');
         $basket = Basket::where('user_id', auth()->id())->get();
-           if($basket)
-{       
-             
+        $item=BasketItem::where('basket_id', auth()->id())->get();
+        $item=BasketItem::all()->get('item');
+        if($basket){
+                    if(!$item=BasketItem::where('article_id', 'article_id')){
+                       $item = new BasketItem();
+                        $item->article_id = $request['article_id'];
+                        $item->quantity = "1";
+                        $item['basket_id']= Basket::pluck('id')->implode(' ', 'id');$item->save();
+                         
+                    } 
+                             $item=BasketItem::find('article_id');
+            if(isset($item['article_id'])){
+                        $item->article_id = Auth::article()->id;    
+
+                $item=BasketItem::all()->map(function ($item, $key) {
+                $item['quantity'] += 1;
+                $item->save();
+                });}
+                if(!isset($item['article_id'])){
+                      $item = new BasketItem();
+                        $item->article_id = $request['article_id'];
+                        $item->quantity = "1";
+                        $item['basket_id']= Basket::pluck('id')->implode(' ', 'id');
+                        $item->save();
+                     }    
               return redirect('/basket/'.$basket[0]->id);
             }
           if(!$basket){
@@ -53,7 +75,7 @@ class BasketController extends Controller
               $basket->save();  
              return redirect('/basket/'.$basket->id)->with('message', 'Your basket has been added💃💃💃💃!');
             }
-            
+            return redirect('/basket/'.$basket->id)->with('message', 'Your cart has been added💃💃💃💃!');
         }
 
     /**
@@ -63,28 +85,9 @@ class BasketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show( BasketItem $item, Basket $basket )
-    {
-        if($item) {
-        
-        $item=BasketItem::all()->map(function ($item, $key) {
-        
-        $item['quantity'] += 1;
-        $item->save();
-        return $item;
-});
-     return view('basket.index')->with($item->all());
-     
-         if(!$item) {
-        $item=BasketItem::all()->map(function ($item, $key) {
-           $item= new BasketItem(); 
-        $item['quantity'] += 1;
-        $item->save();
-        return $item;
-           });
-            return view('basket.index')->with($item->all());
-        
-    }}
-       
+    {		
+     $items=BasketItem::all();
+    return view('basket.index', ['items' => $items]); 
        }
 
     /**
